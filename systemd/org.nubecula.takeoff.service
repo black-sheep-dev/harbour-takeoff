@@ -1,0 +1,12 @@
+[Unit]
+Description=Takeoff autostart service
+Requires=lipstick.service
+After=lipstick.service
+RequiresMountsFor=/home
+
+[Service]
+Type=oneshot
+ExecStart=/home/nemo/.config/harbour-takeoff/takeoff.sh
+
+[Install]
+WantedBy=post-user-session.target

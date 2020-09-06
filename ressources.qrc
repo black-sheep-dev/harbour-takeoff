@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="logo-white">icons/logo-white.svg</file>
+        <file alias="logo">icons/logo.svg</file>
+        <file alias="git">icons/github.svg</file>
+        <file alias="paypal">icons/paypal.svg</file>
+    </qresource>
+</RCC>
