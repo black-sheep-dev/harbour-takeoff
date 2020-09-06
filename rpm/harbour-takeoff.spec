@@ -9,7 +9,7 @@ Name:       harbour-takeoff
 # << macros
 
 Summary:    Takeoff
-Version:    0.2.4
+Version:    0.2.5
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3

@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-VERSION = 0.2.4
+VERSION = 0.2.5
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
@@ -36,7 +36,7 @@ DISTFILES += qml/harbour-takeoff.qml \
     qml/pages/ActiveAppsPage.qml \
     qml/pages/ManagerPage.qml \
     rpm/harbour-takeoff.changes.in \
-    rpm/harbour-takeoff.changes.run.in \
+    rpm/harbour-takeoff.changes.run \
     rpm/harbour-takeoff.spec \
     rpm/harbour-takeoff.yaml \
     systemd/org.nubecula.takeoff.service \
