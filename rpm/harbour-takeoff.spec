@@ -9,7 +9,7 @@ Name:       harbour-takeoff
 # << macros
 
 Summary:    Takeoff
-Version:    0.3.0
+Version:    0.3.1
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -64,9 +64,6 @@ echo "#!/bin/bash" >> /home/nemo/.config/harbour-takeoff/takeoff.sh
 chown -R nemo:nemo /home/nemo/.config/harbour-takeoff
 chmod a+x /home/nemo/.config/harbour-takeoff/takeoff.sh
 fi
-
-systemctl restart mce.service
-systemctl-user restart ngfd.service
 
 systemctl-user daemon-reload
 systemctl-user enable org.nubecula.takeoff.service || true

@@ -22,10 +22,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName(QStringLiteral("nubecula.org"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("nubecula.org"));
 
-    qmlRegisterType<App>("org.nubecula.takeoff", 1, 0, "App");
-    qmlRegisterType<AppListModel>("org.nubecula.takeoff", 1, 0, "AppListModel");
+    qmlRegisterType<App>("org.nubecula.harbour.takeoff", 1, 0, "App");
+    qmlRegisterType<AppListModel>("org.nubecula.harbour.takeoff", 1, 0, "AppListModel");
 
-    qmlRegisterSingletonType<AutostartManager>("org.nubecula.takeoff",
+    qmlRegisterSingletonType<AutostartManager>("org.nubecula.harbour.takeoff",
                                                1,
                                                0,
                                                "AutostartManager",
