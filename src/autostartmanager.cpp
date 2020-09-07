@@ -72,6 +72,40 @@ void AutostartManager::cleanup()
     qDeleteAll(apps.begin(), apps.end());
 }
 
+QString AutostartManager::getStartCmd(const QString &cmd) const
+{
+    const QStringList parts = cmd.split(" ");
+
+    if (parts.isEmpty())
+        return QString();
+
+    // check if binary exists
+    QString binary = parts.last();
+
+    if (!binary.startsWith(QStringLiteral("/usr/bin/"))) {
+        binary.prepend("/usr/bin/");
+    }
+
+    if (!QFile(binary).exists())
+        return QString();
+
+    // prepare start cmd
+    QString start("/usr/bin/invoker -n -s ");
+
+    const QStringList type = parts.filter("--type=");
+
+    if (type.isEmpty())
+        start.append("--type=silica-qt5");
+    else
+        start.append(type.first());
+
+    start.append(" ");
+    start.append(binary);
+
+    return start;
+}
+
+
 void AutostartManager::loadApps()
 {
     QDirIterator it(QStringLiteral("/usr/share/applications"),
@@ -91,9 +125,13 @@ void AutostartManager::loadApps()
 
         ini.beginGroup(QStringLiteral("Desktop Entry"));
 
+        const QString cmd = ini.value(QStringLiteral("Exec")).toString().simplified();
+
         if ( ini.value(QStringLiteral("Type")).toString() != "Application"
              || ini.value(QStringLiteral("NoDisplay"), false).toBool()
-             || ini.contains(QStringLiteral("NotShowIn")) )
+             || ini.contains(QStringLiteral("NotShowIn"))
+             || cmd.contains(QStringLiteral("sailfish-qml"))
+             || cmd.isEmpty() )
             continue;
 
         // create app
@@ -102,7 +140,15 @@ void AutostartManager::loadApps()
         app->setIcon(ini.value(QStringLiteral("Icon")).toString());
         app->setPackageName(QFileInfo(file).baseName());
         app->setName(ini.value(QStringLiteral("Name")).toString());
-        app->setStartCmd(ini.value(QStringLiteral("Exec")).toString());
+
+        const QString startCmd = getStartCmd(cmd);
+
+        if (startCmd.isEmpty()) {
+            delete app;
+            continue;
+        }
+
+        app->setStartCmd(startCmd);
 
         // check if app is active
         if (m_activeApps.contains(app->packageName())) {
@@ -153,7 +199,7 @@ void AutostartManager::writeScript()
 
     for (const App *app: m_activeAppsModel->apps()) {
         out << "###" << app->packageName() << "\n";
-        out << app->startCmd() << " &\n";
+        out << app->startCmd() << "\n";
     }
 
     file.close();

@@ -26,6 +26,7 @@ private slots:
 
 private:
     void cleanup();
+    QString getStartCmd(const QString &cmd) const;
     void loadApps();
     void readScript();
     void writeScript();

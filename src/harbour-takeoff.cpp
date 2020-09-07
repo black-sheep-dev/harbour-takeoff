@@ -1,6 +1,8 @@
 #include <QtQuick>
 #include <sailfishapp.h>
 
+#include <QTranslator>
+
 #include "autostartmanager.h"
 
 int main(int argc, char *argv[])
@@ -15,7 +17,10 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    QCoreApplication::setApplicationName(QStringLiteral("Takeoff"));
     QCoreApplication::setApplicationVersion(APP_VERSION);
+    QCoreApplication::setOrganizationName(QStringLiteral("nubecula.org"));
+    QCoreApplication::setOrganizationDomain(QStringLiteral("nubecula.org"));
 
     qmlRegisterType<App>("org.nubecula.takeoff", 1, 0, "App");
     qmlRegisterType<AppListModel>("org.nubecula.takeoff", 1, 0, "AppListModel");

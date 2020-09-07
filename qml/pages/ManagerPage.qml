@@ -92,6 +92,8 @@ Page {
                     onCheckedChanged: autostart = checked
                 }
             }
+
+            onClicked: activateSwitch.checked = !activateSwitch.checked
         }
         VerticalScrollDecorator {}
     }

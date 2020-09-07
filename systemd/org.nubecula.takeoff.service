@@ -2,7 +2,6 @@
 Description=Takeoff autostart service
 Requires=lipstick.service
 After=lipstick.service
-RequiresMountsFor=/home
 
 [Service]
 Type=oneshot
