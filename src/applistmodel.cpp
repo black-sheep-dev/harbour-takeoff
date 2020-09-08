@@ -13,6 +13,30 @@ QList<App *> AppListModel::apps() const
     return m_apps;
 }
 
+void AppListModel::moveDown(int index)
+{
+    if ((index + 1) >= m_apps.count())
+        return;
+
+    beginResetModel();
+    m_apps.move(index, index + 1);
+    endResetModel();
+
+    emit changed();
+}
+
+void AppListModel::moveUp(int index)
+{
+    if (index <= 0)
+        return;
+
+    beginResetModel();
+    m_apps.move(index, index - 1);
+    endResetModel();
+
+    emit changed();
+}
+
 void AppListModel::addApp(App *app)
 {
     if (m_apps.contains(app))

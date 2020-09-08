@@ -10,6 +10,13 @@ Page {
     allowedOrientations: Orientation.All
 
     SilicaListView {
+        id: listView
+
+        anchors.fill: parent
+        clip: true
+
+        model: AutostartManager.activeApps()
+
         PullDownMenu {
             MenuItem {
                 text: qsTr("About")
@@ -22,72 +29,68 @@ Page {
             }
         }
 
-        id: listView
 
         header: PageHeader {
             title: qsTr("Active Apps")
         }
 
-        anchors.fill: parent
-
-        model: AutostartManager.activeApps()
-
-        delegate: BackgroundItem {
+        delegate: ListItem {
             id: delegate
 
-            width: parent.width
-            height: Theme.itemSizeLarge
+            width: listView.width
             contentHeight: Theme.itemSizeLarge
 
-            Row {
-                width: parent.width - 2 * x
-                x: Theme.horizontalPageMargin
-                height: parent.height
-                anchors.verticalCenter: parent.verticalCenter
-
-                Image {
-                    id: appIcon
-
-                    height: parent.height - 2 * Theme.paddingSmall
-                    width: parent.height - 2 * Theme.paddingSmall
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    source: "image://theme/" + icon
+            menu: ContextMenu {
+                MenuItem {
+                    text: qsTr("Move up");
+                    onClicked: AutostartManager.activeApps().moveUp(index)
                 }
-
-                Item {
-                    id: spacer
-
-                    width:Theme.paddingMedium
-                    height:1
-
-                }
-
-                Column {
-                    id: data
-
-                    width: parent.width - appIcon.width
-
-                    anchors.verticalCenter: appIcon.verticalCenter
-
-                    Label{
-                        id: text
-                        width: parent.width
-                        elide: Text.ElideRight
-                        text: name
-                        color: pressed ? Theme.secondaryHighlightColor:Theme.highlightColor
-                        font.pixelSize: Theme.fontSizeMedium
-                    }
-                    Label{
-                        text: package_name
-                        color: Theme.secondaryColor
-                        font.pixelSize: Theme.fontSizeSmall
-
-                    }
+                MenuItem {
+                    text: qsTr("Move down");
+                    onClicked: AutostartManager.activeApps().moveDown(index)
                 }
             }
 
-            onClicked: console.log("Clicked " + index)
+            Image {
+                id: appIcon
+
+                x: Theme.horizontalPageMargin
+                height: parent.height - 2 * Theme.paddingSmall
+                width: parent.height - 2 * Theme.paddingSmall
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                source: "image://theme/" + icon
+            }
+
+            Item {
+                id: spacer
+
+                anchors.left: appIcon.right
+                width:Theme.paddingMedium
+                height: 1
+
+            }
+
+            Column {
+                id: data
+
+                anchors.left: spacer.right
+                anchors.verticalCenter: appIcon.verticalCenter
+
+                Label{
+                    id: text
+                    width: parent.width
+                    text: name
+                    color: pressed ? Theme.secondaryHighlightColor:Theme.highlightColor
+                    font.pixelSize: Theme.fontSizeMedium
+                }
+                Label{
+                    text: package_name
+                    color: Theme.secondaryColor
+                    font.pixelSize: Theme.fontSizeSmall
+                }
+            }
         }
         VerticalScrollDecorator {}
     }

@@ -12,6 +12,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Sep 09 2020 Black Sheep <blackhsheep@nubecula.org> 0.4.0-1
+- 0.4.0-1 ... Added sort function to active apps (long press item)
+
+* Tue Sep 09 2020 Black Sheep <blackhsheep@nubecula.org> 0.3.2-1
+- 0.3.2-1 ... Chinese translation zh_CN added. Thanks to dahsinfantry for his commit on Github!
+
 * Mon Sep 08 2020 Black Sheep <blackhsheep@nubecula.org> 0.3.1-1
 - 0.3.1-1 ... Improvement of installation routine / Minor fixes
 

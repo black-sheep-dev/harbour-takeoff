@@ -22,6 +22,7 @@ public slots:
     Q_INVOKABLE void reset();
 
 private slots:
+    void applyChanges();
     void onAutostartChanged(bool enabled);
 
 private:

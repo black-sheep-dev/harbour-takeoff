@@ -10,7 +10,7 @@ AutostartManager::AutostartManager(QObject *parent) :
     m_activeAppsModel(new AppListModel(this)),
     m_appsModel(new AppListModel(this))
 {
-
+    connect(m_activeAppsModel, &AppListModel::changed, this, &AutostartManager::applyChanges);
 }
 
 AppListModel *AutostartManager::activeApps()
@@ -41,6 +41,11 @@ void AutostartManager::reset()
     writeScript();
 
     refresh();
+}
+
+void AutostartManager::applyChanges()
+{
+    writeScript();
 }
 
 void AutostartManager::onAutostartChanged(bool enabled)

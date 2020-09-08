@@ -23,6 +23,13 @@ public:
 
     QList<App *> apps() const;
 
+    // reorder function
+    Q_INVOKABLE void moveDown(int index);
+    Q_INVOKABLE void moveUp(int index);
+
+signals:
+    void changed();
+
 public slots:
     void addApp(App *app);
     void removeApp(App *app);
