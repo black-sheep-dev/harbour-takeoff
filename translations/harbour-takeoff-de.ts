@@ -40,11 +40,11 @@
     </message>
     <message>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach oben schieben</translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>NAch unten schieben</translation>
     </message>
 </context>
 <context>

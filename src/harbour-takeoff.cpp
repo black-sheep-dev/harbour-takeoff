@@ -1,43 +1,66 @@
 #include <QtQuick>
 #include <sailfishapp.h>
 
-#include <QTranslator>
-
 #include "autostartmanager.h"
+
+#include <thread>
 
 int main(int argc, char *argv[])
 {
-    // SailfishApp::main() will display "qml/harbour-takeoff.qml", if you need more
-    // control over initialization, you can use:
-    //
-    //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
-    //   - SailfishApp::createView() to get a new QQuickView * instance
-    //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
-    //   - SailfishApp::pathToMainQml() to get a QUrl to the main QML file
-    //
-    // To display the view, call "show()" (will show fullscreen on device).
+    // start processes on start
+    if (argc > 1) {
+        for (int i = 0; i < argc; ++i) {
+            if (QString(argv[i]) == QStringLiteral("--takeoff")) {
 
-    QCoreApplication::setApplicationName(QStringLiteral("Takeoff"));
-    QCoreApplication::setApplicationVersion(APP_VERSION);
-    QCoreApplication::setOrganizationName(QStringLiteral("nubecula.org"));
-    QCoreApplication::setOrganizationDomain(QStringLiteral("nubecula.org"));
+                QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
 
-    qmlRegisterType<App>("org.nubecula.harbour.takeoff", 1, 0, "App");
-    qmlRegisterType<AppListModel>("org.nubecula.harbour.takeoff", 1, 0, "AppListModel");
+                if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+                    return 0;
 
-    qmlRegisterSingletonType<AutostartManager>("org.nubecula.harbour.takeoff",
-                                               1,
-                                               0,
-                                               "AutostartManager",
-                                               [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
+                QTextStream in(&file);
 
-        Q_UNUSED(engine)
-        Q_UNUSED(scriptEngine)
+                while (!in.atEnd()) {
+                    const QString line = in.readLine().simplified();
 
-        AutostartManager *manager = new AutostartManager();
+                    if (line.startsWith("###")) {
+                        QProcess *process = new QProcess();
+                        process->startDetached(in.readLine().simplified());
+                        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+                    }
+                }
 
-        return manager;
-    });
+                file.close();
 
-    return SailfishApp::main(argc, argv);
+                std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+
+                exit(0);
+            }
+        }
+
+    } else {
+        // start gui
+        QCoreApplication::setApplicationName(QStringLiteral("Takeoff"));
+        QCoreApplication::setApplicationVersion(APP_VERSION);
+        QCoreApplication::setOrganizationName(QStringLiteral("nubecula.org"));
+        QCoreApplication::setOrganizationDomain(QStringLiteral("nubecula.org"));
+
+        qmlRegisterType<App>("org.nubecula.harbour.takeoff", 1, 0, "App");
+        qmlRegisterType<AppListModel>("org.nubecula.harbour.takeoff", 1, 0, "AppListModel");
+
+        qmlRegisterSingletonType<AutostartManager>("org.nubecula.harbour.takeoff",
+                                                   1,
+                                                   0,
+                                                   "AutostartManager",
+                                                   [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
+
+            Q_UNUSED(engine)
+            Q_UNUSED(scriptEngine)
+
+            AutostartManager *manager = new AutostartManager();
+
+            return manager;
+        });
+
+        return SailfishApp::main(argc, argv);
+    }
 }

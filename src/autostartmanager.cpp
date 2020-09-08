@@ -135,7 +135,6 @@ void AutostartManager::loadApps()
         if ( ini.value(QStringLiteral("Type")).toString() != "Application"
              || ini.value(QStringLiteral("NoDisplay"), false).toBool()
              || ini.contains(QStringLiteral("NotShowIn"))
-             || cmd.contains(QStringLiteral("sailfish-qml"))
              || cmd.isEmpty() )
             continue;
 
@@ -146,14 +145,7 @@ void AutostartManager::loadApps()
         app->setPackageName(QFileInfo(file).baseName());
         app->setName(ini.value(QStringLiteral("Name")).toString());
 
-        const QString startCmd = getStartCmd(cmd);
-
-        if (startCmd.isEmpty()) {
-            delete app;
-            continue;
-        }
-
-        app->setStartCmd(startCmd);
+        app->setStartCmd(cmd);
 
         // check if app is active
         if (m_activeApps.contains(app->packageName())) {
@@ -171,7 +163,7 @@ void AutostartManager::loadApps()
 
 void AutostartManager::readScript()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.sh");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
@@ -193,14 +185,12 @@ void AutostartManager::readScript()
 
 void AutostartManager::writeScript()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.sh");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
     QTextStream out(&file);
-
-    out << "#!/bin/bash\n";
 
     for (const App *app: m_activeAppsModel->apps()) {
         out << "###" << app->packageName() << "\n";

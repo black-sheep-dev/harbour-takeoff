@@ -9,7 +9,7 @@ Name:       harbour-takeoff
 # << macros
 
 Summary:    Takeoff
-Version:    0.4.0
+Version:    0.4.5
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -60,10 +60,13 @@ fi
 if [[ ! -d "/home/nemo/.config/harbour-takeoff" ]]
 then
 mkdir /home/nemo/.config/harbour-takeoff
-echo "#!/bin/bash" >> /home/nemo/.config/harbour-takeoff/takeoff.sh
-chown -R nemo:nemo /home/nemo/.config/harbour-takeoff
-chmod a+x /home/nemo/.config/harbour-takeoff/takeoff.sh
+touch /home/nemo/.config/harbour-takeoff/takeoff.def
 fi
+
+echo "#!/bin/bash" > /home/nemo/.config/harbour-takeoff/takeoff.sh
+echo "/usr/bin/invoker -n -s --type=silica-qt5 /usr/bin/harbour-takeoff --takeoff" >> /home/nemo/.config/harbour-takeoff/takeoff.sh
+chmod a+x /home/nemo/.config/harbour-takeoff/takeoff.sh
+chown -R nemo:nemo /home/nemo/.config/harbour-takeoff
 
 systemctl-user daemon-reload
 systemctl-user enable org.nubecula.takeoff.service || true
