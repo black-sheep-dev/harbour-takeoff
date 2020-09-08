@@ -38,6 +38,14 @@
         <source>Active Apps</source>
         <translation>允许自启的软件</translation>
     </message>
+    <message>
+        <source>Move up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManagerPage</name>

@@ -21,9 +21,8 @@ public slots:
     Q_INVOKABLE void refresh();
     Q_INVOKABLE void reset();
 
-private slots:
-    void applyChanges();
-    void onAutostartChanged(bool enabled);
+    Q_INVOKABLE void applyChanges();
+    Q_INVOKABLE void onAutostartChanged(bool enabled);
 
 private:
     void cleanup();

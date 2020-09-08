@@ -89,7 +89,9 @@ Page {
 
                     Component.onCompleted: checked = autostart
 
-                    onCheckedChanged: autostart = checked
+                    onCheckedChanged: {
+                        autostart = checked
+                    }
                 }
             }
 

@@ -147,17 +147,25 @@ void AutostartManager::loadApps()
 
         app->setStartCmd(cmd);
 
-        // check if app is active
-        if (m_activeApps.contains(app->packageName())) {
-              app->setAutostart(true);
-              m_activeAppsModel->addApp(app);
-        }
-
-        connect(app, &App::autostartChanged, this, &AutostartManager::onAutostartChanged);
-
         m_appsModel->addApp(app);
 
         ini.endGroup();
+    }
+
+    // check if app is active
+    for (const QString &package: m_activeApps) {
+        for (App *app: m_appsModel->apps()) {
+            if (app->packageName() == package) {
+                app->setAutostart(true);
+                m_activeAppsModel->addApp(app);
+                break;
+            }
+        }
+    }
+
+    // create connections
+    for (App *app: m_appsModel->apps()) {
+        connect(app, &App::autostartChanged, this, &AutostartManager::onAutostartChanged);
     }
 }
 

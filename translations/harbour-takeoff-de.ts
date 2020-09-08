@@ -44,7 +44,7 @@
     </message>
     <message>
         <source>Move down</source>
-        <translation>NAch unten schieben</translation>
+        <translation>Nach unten schieben</translation>
     </message>
 </context>
 <context>
