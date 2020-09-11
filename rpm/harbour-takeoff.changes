@@ -12,7 +12,8 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Tue Sep 09 2020 Black Sheep <blackhsheep@nubecula.org> 0.4.7-1
+* Fri Sep 11 2020 Black Sheep <blackhsheep@nubecula.org> 0.4.8-1
+- 0.4.8-1 ... Add Swedish translation. Tanks to  eson57 for his commit on Github!
 - 0.4.7-1 ... Fixed wrong order in Active Apps list when load configuration file
 - 0.4.5-1 ... Changed startup routine from bash script to QProcess / apps startet with sailfish-qml are supported
 - 0.4.0-1 ... Added sort function to active apps (long press item)

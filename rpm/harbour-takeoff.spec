@@ -9,7 +9,7 @@ Name:       harbour-takeoff
 # << macros
 
 Summary:    Takeoff
-Version:    0.4.7
+Version:    0.4.8
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -68,8 +68,8 @@ echo "/usr/bin/invoker -n -s --type=silica-qt5 /usr/bin/harbour-takeoff --takeof
 chmod a+x /home/nemo/.config/harbour-takeoff/takeoff.sh
 chown -R nemo:nemo /home/nemo/.config/harbour-takeoff
 
-systemctl-user daemon-reload
 systemctl-user enable org.nubecula.takeoff.service || true
+systemctl-user daemon-reload
 
 # << install post
 
