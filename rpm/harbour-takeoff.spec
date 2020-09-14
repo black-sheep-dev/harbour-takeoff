@@ -9,7 +9,7 @@ Name:       harbour-takeoff
 # << macros
 
 Summary:    Takeoff
-Version:    0.4.8
+Version:    0.5.3
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -52,11 +52,6 @@ rm -rf %{buildroot}
 
 # >> install post
 %post
-systemctl-user stop org.nubecula.takeoff.service || true
-if /sbin/podof harbour-takeoff > /dev/null; then
-killall harbour-takeoff || true
-fi
-
 if [[ ! -d "/home/nemo/.config/harbour-takeoff" ]]
 then
 mkdir /home/nemo/.config/harbour-takeoff
@@ -68,8 +63,16 @@ echo "/usr/bin/invoker -n -s --type=silica-qt5 /usr/bin/harbour-takeoff --takeof
 chmod a+x /home/nemo/.config/harbour-takeoff/takeoff.sh
 chown -R nemo:nemo /home/nemo/.config/harbour-takeoff
 
-systemctl-user enable org.nubecula.takeoff.service || true
-systemctl-user daemon-reload
+if [ $1 -eq 1 ]; then
+# Package install,
+systemctl-user enable org.nubecula.takeoff.service >/dev/null 2>&1 || :
+#systemctl-user start org.nubecula.takeoff.service > /dev/null 2>&1 || :
+else
+# Package upgrade
+if systemctl-user --quiet is-enabled org.nubecula.takeoff.service ; then
+systemctl reenable org.nubecula.takeoff.service >/dev/null 2>&1 || :
+fi
+fi
 
 # << install post
 
@@ -79,9 +82,14 @@ desktop-file-install --delete-original       \
 
 %preun
 # >> preun
-systemctl-user stop org.nubecula.takeoff.service || true
-systemctl-user disable org.nubecula.takeoff.service || true
-systemctl-user daemon-reload
+if [ "$1" = 0 ]; then
+systemctl-user stop org.nubecula.takeoff.service  > /dev/null 2>&1 || :
+systemctl-user disable org.nubecula.takeoff.service  > /dev/null 2>&1 || :
+fi
+
+#systemctl-user stop org.nubecula.takeoff.service || true
+#systemctl-user disable org.nubecula.takeoff.service || true
+#systemctl-user daemon-reload
 if /sbin/pidof harbour-takeoff > /dev/null; then
 killall harbour-takeoff || true
 fi

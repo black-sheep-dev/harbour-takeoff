@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-VERSION = 0.4.8
+VERSION = 0.5.3
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
@@ -26,12 +26,14 @@ INSTALLS += systemd
 SOURCES += src/harbour-takeoff.cpp \
     src/app.cpp \
     src/applistmodel.cpp \
-    src/autostartmanager.cpp
+    src/autostartmanager.cpp \
+    src/launcher.cpp
 
 DISTFILES += qml/harbour-takeoff.qml \
     icons/512x512/harbour-takeoff.png \
     icons/scaleable/harbour-takeoff.svg \
     qml/cover/CoverPage.qml \
+    qml/dialogs/EditAppDialog.qml \
     qml/pages/AboutPage.qml \
     qml/pages/ActiveAppsPage.qml \
     qml/pages/ManagerPage.qml \
@@ -55,12 +57,14 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += \
     translations/harbour-takeoff-de.ts \
+    translations/harbour-takeoff-sv.ts \
     translations/harbour-takeoff-zh_CN.ts
 
 HEADERS += \
     src/app.h \
     src/applistmodel.h \
-    src/autostartmanager.h
+    src/autostartmanager.h \
+    src/launcher.h
 
 RESOURCES += \
     ressources.qrc

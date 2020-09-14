@@ -5,6 +5,8 @@
 
 #include <thread>
 
+#include "launcher.h"
+
 int main(int argc, char *argv[])
 {
     // start processes on start
@@ -12,26 +14,7 @@ int main(int argc, char *argv[])
         for (int i = 0; i < argc; ++i) {
             if (QString(argv[i]) == QStringLiteral("--takeoff")) {
 
-                QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
-
-                if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-                    return 0;
-
-                QTextStream in(&file);
-
-                while (!in.atEnd()) {
-                    const QString line = in.readLine().simplified();
-
-                    if (line.startsWith("###")) {
-                        QProcess *process = new QProcess();
-                        process->startDetached(in.readLine().simplified());
-                        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
-                    }
-                }
-
-                file.close();
-
-                std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+                Launcher::takeoff(true);
 
                 exit(0);
             }

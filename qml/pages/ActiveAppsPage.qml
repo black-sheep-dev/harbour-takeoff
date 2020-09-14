@@ -3,6 +3,8 @@ import Sailfish.Silica 1.0
 
 import org.nubecula.harbour.takeoff 1.0
 
+import "../dialogs/"
+
 Page {
     id: page
 
@@ -27,6 +29,11 @@ Page {
                 text: qsTr("Manage")
                 onClicked: pageStack.push(Qt.resolvedUrl("ManagerPage.qml"))
             }
+
+            MenuItem {
+                text: qsTr("Takeoff")
+                onClicked: AutostartManager.takeoff()
+            }
         }
 
 
@@ -48,6 +55,10 @@ Page {
                 MenuItem {
                     text: qsTr("Move down");
                     onClicked: AutostartManager.activeApps().moveDown(index)
+                }
+                MenuItem {
+                    text: qsTr("Edit");
+                    onClicked: pageStack.push(Qt.resolvedUrl("../dialogs/EditAppDialog.qml"), {app: AutostartManager.activeApps().app(index)})
                 }
             }
 

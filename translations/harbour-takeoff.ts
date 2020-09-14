@@ -16,22 +16,26 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Buy me a beer</source>
+        <source>Takeoff is an autostart manager for launching apps after device boot.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Takeoff is an autostart manager for launching apps after device boot.</source>
+        <source>If you like my work why not buy me a beer?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Manage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About</source>
+        <source>Takeoff</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -44,6 +48,33 @@
     </message>
     <message>
         <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditAppDialog</name>
+    <message>
+        <source>Enter start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

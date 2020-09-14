@@ -6,7 +6,8 @@ App::App(QObject *parent) :
     m_icon(QString()),
     m_name(QString()),
     m_packageName(QString()),
-    m_startCmd(QString())
+    m_startCmd(QString()),
+    m_startCmdCustom(QString())
 {
 
 }
@@ -34,6 +35,11 @@ QString App::packageName() const
 QString App::startCmd() const
 {
     return m_startCmd;
+}
+
+QString App::startCmdCustom() const
+{
+    return m_startCmdCustom;
 }
 
 void App::setAutostart(bool enabled)
@@ -80,3 +86,13 @@ void App::setStartCmd(const QString &cmd)
     m_startCmd = cmd;
     emit startCmdChanged(m_startCmd);
 }
+
+void App::setStartCmdCustom(const QString &cmd)
+{
+    if (m_startCmdCustom == cmd)
+        return;
+
+    m_startCmdCustom = cmd;
+    emit startCmdCustomChanged(m_startCmdCustom);
+}
+

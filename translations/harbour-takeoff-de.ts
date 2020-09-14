@@ -16,23 +16,27 @@
         <translation>Spenden</translation>
     </message>
     <message>
-        <source>Buy me a beer</source>
-        <translation>Gib mir ein Bier aus</translation>
-    </message>
-    <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
         <translation>Takeoff ist ein Autostart-Manager um Apps nach dem Systemstart automatisch zu starten.</translation>
+    </message>
+    <message>
+        <source>If you like my work why not buy me a beer?</source>
+        <translation>Wenn Du meine Arbeit magst, warum gibtst du mir nicht einfach ein Bier aus?</translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
+        <source>About</source>
+        <translation>Über</translation>
+    </message>
+    <message>
         <source>Manage</source>
         <translation>Verwalten</translation>
     </message>
     <message>
-        <source>About</source>
-        <translation>Über</translation>
+        <source>Takeoff</source>
+        <translation>Abheben</translation>
     </message>
     <message>
         <source>Active Apps</source>
@@ -40,11 +44,38 @@
     </message>
     <message>
         <source>Move up</source>
-        <translation>Nach oben schieben</translation>
+        <translation>Nach oben</translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation>Nach unten schieben</translation>
+        <translation>Nach unten</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+</context>
+<context>
+    <name>EditAppDialog</name>
+    <message>
+        <source>Enter start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Zurücksetzen</translation>
+    </message>
+    <message>
+        <source>Execute</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

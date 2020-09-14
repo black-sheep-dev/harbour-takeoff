@@ -8,6 +8,14 @@ AppListModel::AppListModel(QObject *parent) :
 
 }
 
+App *AppListModel::app(const int index)
+{
+    if (index >= m_apps.count())
+        return nullptr;
+
+    return m_apps.at(index);
+}
+
 QList<App *> AppListModel::apps() const
 {
     return m_apps;
@@ -107,6 +115,9 @@ QVariant AppListModel::data(const QModelIndex &index, int role) const
     case StartCmdRole:
         return app->startCmd();
 
+    case StartCmdCustomRole:
+        return app->startCmdCustom();
+
     default:
         return QVariant();
     }
@@ -129,6 +140,10 @@ bool AppListModel::setData(const QModelIndex &index, const QVariant &value, int 
         app->setStartCmd(value.toString());
         break;
 
+    case StartCmdCustomRole:
+        app->setStartCmdCustom((value.toString()));
+        break;
+
     default:
         break;
     }
@@ -142,11 +157,12 @@ QHash<int, QByteArray> AppListModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
 
-    roles[AutostartRole]    = "autostart";
-    roles[IconRole]         = "icon";
-    roles[NameRole]         = "name";
-    roles[PackageNameRole]  = "package_name";
-    roles[StartCmdRole]     = "start_cmd";
+    roles[AutostartRole]        = "autostart";
+    roles[IconRole]             = "icon";
+    roles[NameRole]             = "name";
+    roles[PackageNameRole]      = "package_name";
+    roles[StartCmdRole]         = "start_cmd";
+    roles[StartCmdCustomRole]   = "start_cmd_custom";
 
     return roles;
 }

@@ -2,8 +2,11 @@
 
 #include <QDebug>
 #include <QDirIterator>
+#include <QProcess>
 #include <QSettings>
 #include <QTextStream>
+
+#include "launcher.h"
 
 AutostartManager::AutostartManager(QObject *parent) :
     QObject(parent),
@@ -11,6 +14,11 @@ AutostartManager::AutostartManager(QObject *parent) :
     m_appsModel(new AppListModel(this))
 {
     connect(m_activeAppsModel, &AppListModel::changed, this, &AutostartManager::applyChanges);
+}
+
+AutostartManager::~AutostartManager()
+{
+    writeDefinitions();
 }
 
 AppListModel *AutostartManager::activeApps()
@@ -28,24 +36,34 @@ AppListModel *AutostartManager::apps()
     return m_appsModel;
 }
 
+void AutostartManager::execute(const QString &cmd)
+{
+    QProcess::startDetached(cmd);
+}
+
 void AutostartManager::refresh()
 {
     cleanup();
-    readScript();
+    readDefinitions();
     loadApps();
 }
 
 void AutostartManager::reset()
 {
     m_activeAppsModel->reset();
-    writeScript();
+    writeDefinitions();
 
     refresh();
 }
 
+void AutostartManager::takeoff()
+{
+    Launcher::takeoff();
+}
+
 void AutostartManager::applyChanges()
 {
-    writeScript();
+    writeDefinitions();
 }
 
 void AutostartManager::onAutostartChanged(bool enabled)
@@ -63,7 +81,7 @@ void AutostartManager::onAutostartChanged(bool enabled)
         m_activeAppsModel->removeApp(app);
     }
 
-    writeScript();
+    writeDefinitions();
 }
 
 void AutostartManager::cleanup()
@@ -153,14 +171,17 @@ void AutostartManager::loadApps()
     }
 
     // check if app is active
-    for (const QString &package: m_activeApps) {
-        for (App *app: m_appsModel->apps()) {
-            if (app->packageName() == package) {
-                app->setAutostart(true);
-                m_activeAppsModel->addApp(app);
-                break;
-            }
-        }
+    for (App *app: m_appsModel->apps()) {
+        const int idx = m_activeApps.indexOf(app->packageName());
+
+        if (idx < 0)
+            continue;
+
+        if (m_startCmds.at(idx) != app->startCmd())
+            app->setStartCmdCustom(m_startCmds.at(idx));
+
+        app->setAutostart(true);
+        m_activeAppsModel->addApp(app);
     }
 
     // create connections
@@ -169,7 +190,7 @@ void AutostartManager::loadApps()
     }
 }
 
-void AutostartManager::readScript()
+void AutostartManager::readDefinitions()
 {
     QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
 
@@ -177,6 +198,7 @@ void AutostartManager::readScript()
         return;
 
     m_activeApps.clear();
+    m_startCmds.clear();
 
     QTextStream in(&file);
 
@@ -185,13 +207,14 @@ void AutostartManager::readScript()
 
         if (line.startsWith("###")) {
             m_activeApps.append(line.mid(3, line.length() - 3));
+            m_startCmds.append(in.readLine().simplified());
         }
     }
 
     file.close();
 }
 
-void AutostartManager::writeScript()
+void AutostartManager::writeDefinitions()
 {
     QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
 
@@ -202,7 +225,13 @@ void AutostartManager::writeScript()
 
     for (const App *app: m_activeAppsModel->apps()) {
         out << "###" << app->packageName() << "\n";
-        out << app->startCmd() << "\n";
+
+        if (!app->startCmdCustom().isEmpty())
+            out << app->startCmdCustom();
+        else
+            out << app->startCmd();
+
+        out << "\n";
     }
 
     file.close();

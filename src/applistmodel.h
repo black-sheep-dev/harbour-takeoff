@@ -15,12 +15,14 @@ public:
         IconRole,
         NameRole,
         PackageNameRole,
-        StartCmdRole
+        StartCmdRole,
+        StartCmdCustomRole
     };
     Q_ENUMS(AppRoles)
 
     explicit AppListModel(QObject *parent = nullptr);
 
+    Q_INVOKABLE App *app(const int index);
     QList<App *> apps() const;
 
     // reorder function

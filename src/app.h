@@ -12,6 +12,7 @@ class App : public QObject
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString packageName READ packageName WRITE setPackageName NOTIFY packageNameChanged)
     Q_PROPERTY(QString startCmd READ startCmd WRITE setStartCmd NOTIFY startCmdChanged)
+    Q_PROPERTY(QString startCmdCustom READ startCmdCustom WRITE setStartCmdCustom NOTIFY startCmdCustomChanged)
 
 public:
     explicit App(QObject *parent = nullptr);
@@ -21,6 +22,7 @@ public:
     QString name() const;
     QString packageName() const;
     QString startCmd() const;
+    QString startCmdCustom() const;
 
 signals:
     void autostartChanged(bool enabled);
@@ -28,6 +30,7 @@ signals:
     void nameChanged(const QString &name);
     void packageNameChanged(const QString &name);
     void startCmdChanged(const QString &cmd);
+    void startCmdCustomChanged(const QString &cmd);
 
 public slots:
     void setAutostart(bool enabled = true);
@@ -35,6 +38,7 @@ public slots:
     void setName(const QString &name);
     void setPackageName(const QString &name);
     void setStartCmd(const QString &cmd);
+    void setStartCmdCustom(const QString &cmd);
 
 private:
     bool m_autostart;
@@ -42,6 +46,7 @@ private:
     QString m_name;
     QString m_packageName;
     QString m_startCmd;
+    QString m_startCmdCustom;
 };
 
 #endif // APP_H

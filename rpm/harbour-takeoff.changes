@@ -12,14 +12,40 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Fri Sep 11 2020 Black Sheep <blackhsheep@nubecula.org> 0.4.8-1
-- 0.4.8-1 ... Add Swedish translation. Tanks to  eson57 for his commit on Github!
-- 0.4.7-1 ... Fixed wrong order in Active Apps list when load configuration file
-- 0.4.5-1 ... Changed startup routine from bash script to QProcess / apps startet with sailfish-qml are supported
-- 0.4.0-1 ... Added sort function to active apps (long press item)
-- 0.3.2-1 ... Chinese translation zh_CN added. Thanks to dahsinfantry for his commit on Github!
-- 0.3.1-1 ... Improvement of installation routine / Minor fixes
-- 0.3.0-1 ... Inital release
+* Mon Sep 14 2020 Black Sheep <blackhsheep@nubecula.org> 0.5.3-1
+- 0.5.3-1
+- NEEDS REINSTALL!!!! (sorry for the inconvenience)
+- RPM Install/Upgrade fixed not enabling systemd service on package update/upgrade.
+- Start command of active apps are now editable
+
+- 0.5.0-1
+- Optimize systemd behaviour. As long year Gentoo user I hate this weird nasty systemd thing!!!
+- Add an option to start apps from the app in active apps page.
+- Fixed swedish translation not working
+
+- 0.4.9-1
+- Bugfix in RPM package build
+
+- 0.4.8-1
+- Add Swedish translation. Tanks to  eson57 for his commit on Github!
+
+- 0.4.7-1
+- Fixed wrong order in Active Apps list when load configuration file
+
+- 0.4.5-1
+- Changed startup routine from bash script to QProcess / apps startet with sailfish-qml are supported
+
+- 0.4.0-1
+- Added sort function to active apps (long press item)
+
+- 0.3.2-1
+- Chinese translation zh_CN added. Thanks to dahsinfantry for his commit on Github!
+
+- 0.3.1-1
+- Improvement of installation routine / Minor fixes
+
+- 0.3.0-1
+- Inital release
 
 
 

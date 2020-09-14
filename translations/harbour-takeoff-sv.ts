@@ -16,35 +16,66 @@
         <translation>Donationer</translation>
     </message>
     <message>
-        <source>Buy me a beer</source>
-        <translation>Bjud mig på en öl</translation>
-    </message>
-    <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
         <translation>Takeoff är en autostarthanterare för att starta appar efter enhetsstart.</translation>
+    </message>
+    <message>
+        <source>If you like my work why not buy me a beer?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
-        <source>Manage</source>
-        <translation>Hantera</translation>
+        <source>About</source>
+        <translation type="unfinished">Om</translation>
     </message>
     <message>
-        <source>About</source>
-        <translation>Om</translation>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Takeoff</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Active Apps</source>
-        <translation>Aktiva appar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move up</source>
-        <translation>Flytta upp</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation>Flytta ner</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditAppDialog</name>
+    <message>
+        <source>Enter start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Återställ</translation>
+    </message>
+    <message>
+        <source>Execute</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

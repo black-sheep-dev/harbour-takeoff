@@ -16,27 +16,31 @@
         <translation>捐赠</translation>
     </message>
     <message>
-        <source>Buy me a beer</source>
-        <translation>给我买瓶啤酒</translation>
-    </message>
-    <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
         <translation>Takeoff 是用于控制设备启动后的软件自启情况管理器。</translation>
+    </message>
+    <message>
+        <source>If you like my work why not buy me a beer?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
-        <source>Manage</source>
-        <translation>管理</translation>
+        <source>About</source>
+        <translation type="unfinished">关于</translation>
     </message>
     <message>
-        <source>About</source>
-        <translation>关于</translation>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Takeoff</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Active Apps</source>
-        <translation>允许自启的软件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move up</source>
@@ -44,6 +48,33 @@
     </message>
     <message>
         <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditAppDialog</name>
+    <message>
+        <source>Enter start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit start command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
+    </message>
+    <message>
+        <source>Execute</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -117,14 +117,11 @@ Page {
                         wrapMode: Text.WrapAnywhere
                         font.pixelSize: Theme.fontSizeSmall
                         color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
-                        text: qsTr("Buy me a beer")
+                        text: qsTr("If you like my work why not buy me a beer?")
                     }
                 }
                 onClicked: Qt.openUrlExternally("https://www.paypal.com/paypalme/nubecula/1")
             }
         }
     }
-
-
-
 }
