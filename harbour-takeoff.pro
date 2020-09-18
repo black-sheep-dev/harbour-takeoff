@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-VERSION = 0.5.3
+VERSION = 0.5.4
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
@@ -26,6 +26,7 @@ INSTALLS += systemd
 SOURCES += src/harbour-takeoff.cpp \
     src/app.cpp \
     src/applistmodel.cpp \
+    src/applistsortfiltermodel.cpp \
     src/autostartmanager.cpp \
     src/launcher.cpp
 
@@ -63,6 +64,7 @@ TRANSLATIONS += \
 HEADERS += \
     src/app.h \
     src/applistmodel.h \
+    src/applistsortfiltermodel.h \
     src/autostartmanager.h \
     src/launcher.h
 

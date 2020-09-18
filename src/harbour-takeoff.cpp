@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 
         qmlRegisterType<App>("org.nubecula.harbour.takeoff", 1, 0, "App");
         qmlRegisterType<AppListModel>("org.nubecula.harbour.takeoff", 1, 0, "AppListModel");
+        qmlRegisterType<AppListSortFilterModel>("org.nubecula.harbour.takeoff", 1, 0, "AppListSortFilterModel");
 
         qmlRegisterSingletonType<AutostartManager>("org.nubecula.harbour.takeoff",
                                                    1,

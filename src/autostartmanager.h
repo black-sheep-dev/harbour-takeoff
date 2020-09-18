@@ -6,6 +6,7 @@
 #include <QStandardPaths>
 
 #include "applistmodel.h"
+#include "applistsortfiltermodel.h"
 
 class AutostartManager : public QObject
 {

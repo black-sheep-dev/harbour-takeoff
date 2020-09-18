@@ -13,6 +13,10 @@
 # - Summary of changes
 
 * Mon Sep 14 2020 Black Sheep <blackhsheep@nubecula.org> 0.5.3-1
+- 0.5.4-1
+- Added sorting and search functionality to app list
+- German translation update
+
 - 0.5.3-1
 - NEEDS REINSTALL!!!! (sorry for the inconvenience)
 - RPM Install/Upgrade fixed not enabling systemd service on package update/upgrade.

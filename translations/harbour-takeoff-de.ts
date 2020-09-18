@@ -59,23 +59,23 @@
     <name>EditAppDialog</name>
     <message>
         <source>Enter start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Startbefehl eingeben</translation>
     </message>
     <message>
         <source>Start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Startbefehl</translation>
     </message>
     <message>
         <source>Edit start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Startbefehl bearbeiten</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Zurücksetzen</translation>
+        <translation>Zurücksetzen</translation>
     </message>
     <message>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Starten</translation>
     </message>
 </context>
 <context>
