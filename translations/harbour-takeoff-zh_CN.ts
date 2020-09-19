@@ -21,61 +21,61 @@
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished"></translation>
+        <translation>如果你喜欢我的作品，不妨给我买瓶啤酒？</translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished">关于</translation>
+        <translation>关于</translation>
     </message>
     <message>
         <source>Manage</source>
-        <translation type="unfinished"></translation>
+        <translation>管理</translation>
     </message>
     <message>
         <source>Takeoff</source>
-        <translation type="unfinished"></translation>
+        <translation>Takeoff</translation>
     </message>
     <message>
         <source>Active Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>允许自启软件</translation>
     </message>
     <message>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>上移</translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>下移</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑</translation>
     </message>
 </context>
 <context>
     <name>EditAppDialog</name>
     <message>
         <source>Enter start command</source>
-        <translation type="unfinished"></translation>
+        <translation>输入启动命令</translation>
     </message>
     <message>
         <source>Start command</source>
-        <translation type="unfinished"></translation>
+        <translation>启动命令</translation>
     </message>
     <message>
         <source>Edit start command</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑启动命令</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">重置</translation>
+        <translation>重置</translation>
     </message>
     <message>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>执行</translation>
     </message>
 </context>
 <context>
