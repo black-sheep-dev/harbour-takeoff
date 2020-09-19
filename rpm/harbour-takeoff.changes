@@ -12,7 +12,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Mon Sep 14 2020 Black Sheep <blackhsheep@nubecula.org> 0.5.3-1
+* Sat Sep 19 2020 Black Sheep <blackhsheep@nubecula.org> 0.5.5-1
+- 0.5.5-1
+- Fixed a bug where actice apps are displayed in the wrong order, when app starts.
+- Chinese translation update / Thanks to dahsinfantry again!
+
 - 0.5.4-1
 - Added sorting and search functionality to app list
 - German translation update
@@ -31,7 +35,7 @@
 - Bugfix in RPM package build
 
 - 0.4.8-1
-- Add Swedish translation. Tanks to  eson57 for his commit on Github!
+- Add Swedish translation. Thanks to  eson57 for his commit on Github!
 
 - 0.4.7-1
 - Fixed wrong order in Active Apps list when load configuration file

@@ -171,6 +171,9 @@ void AutostartManager::loadApps()
     }
 
     // check if app is active
+    QList<App *> active;
+    active.reserve(m_activeApps.count());
+
     for (App *app: m_appsModel->apps()) {
         const int idx = m_activeApps.indexOf(app->packageName());
 
@@ -181,8 +184,10 @@ void AutostartManager::loadApps()
             app->setStartCmdCustom(m_startCmds.at(idx));
 
         app->setAutostart(true);
-        m_activeAppsModel->addApp(app);
+        active.insert(idx, app);
     }
+
+    m_activeAppsModel->setApps(active);
 
     // create connections
     for (App *app: m_appsModel->apps()) {
