@@ -9,12 +9,13 @@
 #   - icon definition filename in desktop file must be changed
 #   - translation filenames have to be changed
 
-# The name of your application
-VERSION = 0.5.5
-
+# VERSION
+VERSION = 0.6.0
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
+# The name of your application
 TARGET = harbour-takeoff
+DEFINES += APP_TARGET=\\\"$$TARGET\\\"
 
 CONFIG += sailfishapp
 
@@ -25,19 +26,23 @@ INSTALLS += systemd
 
 SOURCES += src/harbour-takeoff.cpp \
     src/app.cpp \
+    src/applibraryapi.cpp \
     src/applistmodel.cpp \
     src/applistsortfiltermodel.cpp \
     src/autostartmanager.cpp \
     src/launcher.cpp
 
 DISTFILES += qml/harbour-takeoff.qml \
+    api/harbour-takeoff-app-library.json \
     icons/512x512/harbour-takeoff.png \
     icons/scaleable/harbour-takeoff.svg \
+    library/harbour-takeoff-app-library.json \
     qml/cover/CoverPage.qml \
     qml/dialogs/EditAppDialog.qml \
     qml/pages/AboutPage.qml \
     qml/pages/ActiveAppsPage.qml \
     qml/pages/ManagerPage.qml \
+    qml/pages/SettingsPage.qml \
     rpm/harbour-takeoff.changes \
     rpm/harbour-takeoff.changes.run.in \
     rpm/harbour-takeoff.spec \
@@ -63,6 +68,7 @@ TRANSLATIONS += \
 
 HEADERS += \
     src/app.h \
+    src/applibraryapi.h \
     src/applistmodel.h \
     src/applistsortfiltermodel.h \
     src/autostartmanager.h \

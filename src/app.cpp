@@ -7,7 +7,9 @@ App::App(QObject *parent) :
     m_name(QString()),
     m_packageName(QString()),
     m_startCmd(QString()),
-    m_startCmdCustom(QString())
+    m_startCmdCustom(QString()),
+    m_startCmdLibrary(QString()),
+    m_useLibraryStartCmd(false)
 {
 
 }
@@ -40,6 +42,16 @@ QString App::startCmd() const
 QString App::startCmdCustom() const
 {
     return m_startCmdCustom;
+}
+
+QString App::startCmdLibrary() const
+{
+    return m_startCmdLibrary;
+}
+
+bool App::useLibraryStartCmd() const
+{
+    return m_useLibraryStartCmd;
 }
 
 void App::setAutostart(bool enabled)
@@ -94,5 +106,23 @@ void App::setStartCmdCustom(const QString &cmd)
 
     m_startCmdCustom = cmd;
     emit startCmdCustomChanged(m_startCmdCustom);
+}
+
+void App::setStartCmdLibrary(const QString &cmd)
+{
+    if (m_startCmdLibrary == cmd)
+        return;
+
+    m_startCmdLibrary = cmd;
+    emit startCmdLibraryChanged(m_startCmdLibrary);
+}
+
+void App::setUseLibraryStartCmd(bool enable)
+{
+    if (m_useLibraryStartCmd == enable)
+        return;
+
+    m_useLibraryStartCmd = enable;
+    emit useLibraryStartCmdChanged(m_useLibraryStartCmd);
 }
 

@@ -12,7 +12,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Sat Sep 19 2020 Black Sheep <blackhsheep@nubecula.org> 0.5.5-1
+* Sun Sep 20 2020 Black Sheep <blackhsheep@nubecula.org> 0.6.0-1
+- 0.6.0-1
+- Add app library with start commands
+- Add access to remote library api
+- Custom start commands are stored now and don't get lost when app is deactivated
+
 - 0.5.5-1
 - Fixed a bug where actice apps are displayed in the wrong order, when app starts.
 - Chinese translation update / Thanks to dahsinfantry again!

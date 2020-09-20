@@ -13,12 +13,15 @@ Dialog {
 
         TextField {
             id: cmdField
+
+            enabled: !useLibraryCmdSwitch.checked
+
             width: parent.width
             placeholderText: qsTr("Enter start command")
             label: qsTr("Start command")
 
             text: {
-                if (app.startCmdCustom.length)
+                if (app.startCmdCustom.length > 0)
                     return app.startCmdCustom
                 else
                     return app.startCmd
@@ -38,18 +41,52 @@ Dialog {
 
             Button {
                 text: qsTr("Reset")
-                onClicked: cmdField.text = app.startCmd
+                onClicked: {
+                    cmdField.text = app.startCmd
+                    useLibraryCmdSwitch.checked = false
+                }
+            }
+        }
+
+        Item {
+            height: Theme.paddingMedium
+            width: 1
+        }
+
+        TextSwitch {
+            enabled: app.startCmdLibrary.length > 0
+            visible: !AutostartManager.libraryAPI().autoUse
+
+            id: useLibraryCmdSwitch
+
+            text: qsTr("Use start command from library")
+            description: qsTr("If you have problems with an app not starting, you can use a start command from the app library.")
+
+            checked: app.useLibraryStartCmd
+
+            onCheckedChanged: {
+                if (checked)  {
+                    cmdField.text = app.startCmdLibrary
+                } else {
+                    if (app.startCmdCustom.length > 0)
+                        cmdField.text = app.startCmdCustom
+                    else
+                        cmdField.text = app.startCmd
+                }
             }
         }
     }
 
     onDone: {
         if (result == DialogResult.Accepted) {
-            if (app.startCmd === cmdField.text)
+            if (app.startCmd === cmdField.text) {
                 app.startCmdCustom = ""
-            else
-                app.startCmdCustom = cmdField.text
+            } else {
+                if (cmdField.text !== app.startCmdLibrary)
+                    app.startCmdCustom = cmdField.text
+            }
 
+            app.useLibraryStartCmd = useLibraryCmdSwitch.checked
             AutostartManager.applyChanges()
         }
     }

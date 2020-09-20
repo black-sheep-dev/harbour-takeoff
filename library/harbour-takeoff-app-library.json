@@ -1,0 +1,8 @@
+{
+    "api_version": 1,
+    "library_version": 1,
+    
+    "apps": {
+        "voicecall-ui": "invoker --type=silica-qt5 -n -d 5 /usr/bin/voicecall-ui"
+    }
+} 

@@ -21,6 +21,10 @@ Page {
                 text: qsTr("Refresh")
                 onClicked: AutostartManager.refresh()
             }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
         }
 
         Column {

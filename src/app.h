@@ -13,6 +13,8 @@ class App : public QObject
     Q_PROPERTY(QString packageName READ packageName WRITE setPackageName NOTIFY packageNameChanged)
     Q_PROPERTY(QString startCmd READ startCmd WRITE setStartCmd NOTIFY startCmdChanged)
     Q_PROPERTY(QString startCmdCustom READ startCmdCustom WRITE setStartCmdCustom NOTIFY startCmdCustomChanged)
+    Q_PROPERTY(QString startCmdLibrary READ startCmdLibrary WRITE setStartCmdLibrary NOTIFY startCmdLibraryChanged)
+    Q_PROPERTY(bool useLibraryStartCmd READ useLibraryStartCmd WRITE setUseLibraryStartCmd NOTIFY useLibraryStartCmdChanged)
 
 public:
     explicit App(QObject *parent = nullptr);
@@ -23,6 +25,8 @@ public:
     QString packageName() const;
     QString startCmd() const;
     QString startCmdCustom() const;
+    QString startCmdLibrary() const;
+    bool useLibraryStartCmd() const;
 
 signals:
     void autostartChanged(bool enabled);
@@ -31,6 +35,8 @@ signals:
     void packageNameChanged(const QString &name);
     void startCmdChanged(const QString &cmd);
     void startCmdCustomChanged(const QString &cmd);
+    void startCmdLibraryChanged(const QString &cmd);
+    void useLibraryStartCmdChanged(bool enabled);
 
 public slots:
     void setAutostart(bool enabled = true);
@@ -39,6 +45,8 @@ public slots:
     void setPackageName(const QString &name);
     void setStartCmd(const QString &cmd);
     void setStartCmdCustom(const QString &cmd);
+    void setStartCmdLibrary(const QString &cmd);
+    void setUseLibraryStartCmd(bool enable);
 
 private:
     bool m_autostart;
@@ -47,6 +55,8 @@ private:
     QString m_packageName;
     QString m_startCmd;
     QString m_startCmdCustom;
+    QString m_startCmdLibrary;
+    bool m_useLibraryStartCmd;
 };
 
 #endif // APP_H

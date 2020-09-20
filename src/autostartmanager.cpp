@@ -2,6 +2,10 @@
 
 #include <QDebug>
 #include <QDirIterator>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonParseError>
 #include <QProcess>
 #include <QSettings>
 #include <QTextStream>
@@ -11,13 +15,16 @@
 AutostartManager::AutostartManager(QObject *parent) :
     QObject(parent),
     m_activeAppsModel(new AppListModel(this)),
-    m_appsModel(new AppListModel(this))
+    m_appsModel(new AppListModel(this)),
+    m_libraryAPI(new AppLibraryAPI(this))
 {
     connect(m_activeAppsModel, &AppListModel::changed, this, &AutostartManager::applyChanges);
+    connect(m_libraryAPI, &AppLibraryAPI::libraryUpdated, this, &AutostartManager::onLibraryUpdate);
 }
 
 AutostartManager::~AutostartManager()
 {
+    writeCustomSettings();
     writeDefinitions();
 }
 
@@ -36,6 +43,11 @@ AppListModel *AutostartManager::apps()
     return m_appsModel;
 }
 
+AppLibraryAPI *AutostartManager::libraryAPI()
+{
+    return m_libraryAPI;
+}
+
 void AutostartManager::execute(const QString &cmd)
 {
     QProcess::startDetached(cmd);
@@ -46,6 +58,8 @@ void AutostartManager::refresh()
     cleanup();
     readDefinitions();
     loadApps();
+    readCustomSettings();
+    onLibraryUpdate();
 }
 
 void AutostartManager::reset()
@@ -63,6 +77,7 @@ void AutostartManager::takeoff()
 
 void AutostartManager::applyChanges()
 {
+    writeCustomSettings();
     writeDefinitions();
 }
 
@@ -82,6 +97,11 @@ void AutostartManager::onAutostartChanged(bool enabled)
     }
 
     writeDefinitions();
+}
+
+void AutostartManager::onLibraryUpdate()
+{
+    m_libraryAPI->updateApps(m_appsModel->apps());
 }
 
 void AutostartManager::cleanup()
@@ -180,9 +200,6 @@ void AutostartManager::loadApps()
         if (idx < 0)
             continue;
 
-        if (m_startCmds.at(idx) != app->startCmd())
-            app->setStartCmdCustom(m_startCmds.at(idx));
-
         app->setAutostart(true);
         active.insert(idx, app);
     }
@@ -195,15 +212,70 @@ void AutostartManager::loadApps()
     }
 }
 
+void AutostartManager::readCustomSettings()
+{
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/custom.def");
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    QJsonParseError error;
+
+    const QJsonObject customs = QJsonDocument::fromJson(file.readAll(), &error).object();
+
+    file.close();
+
+    if (error.error) {
+#ifdef QT_DEBUG
+        qDebug() << "ERROR PARSING JSON";
+#endif
+        return;
+    }
+
+    for (App *app : m_appsModel->apps()) {
+        app->setUseLibraryStartCmd(customs.value(app->packageName()).toObject().value(QStringLiteral("use_library_cmd")).toBool(false));
+        app->setStartCmdCustom(customs.value(app->packageName()).toObject().value(QStringLiteral("custom_start_cmd")).toString());
+    }
+}
+
+void AutostartManager::writeCustomSettings()
+{
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/custom.def");
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QJsonObject customs;
+
+    for (App *app : m_appsModel->apps()) {
+        QJsonObject item;
+        item.insert(QStringLiteral("use_library_cmd"), app->useLibraryStartCmd());
+        if (!app->startCmdCustom().isEmpty())
+            item.insert(QStringLiteral("custom_start_cmd"), app->startCmdCustom());
+
+        customs.insert(app->packageName(), item);
+    }
+
+    QTextStream out(&file);
+
+#ifdef QT_DEBUG
+    out << QJsonDocument(customs).toJson();
+#else
+    out << QJsonDocument(customs).toJson(QJsonDocument::Compact);
+#endif
+
+
+    file.close();
+}
+
 void AutostartManager::readDefinitions()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/takeoff.def");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
     m_activeApps.clear();
-    m_startCmds.clear();
 
     QTextStream in(&file);
 
@@ -212,7 +284,6 @@ void AutostartManager::readDefinitions()
 
         if (line.startsWith("###")) {
             m_activeApps.append(line.mid(3, line.length() - 3));
-            m_startCmds.append(in.readLine().simplified());
         }
     }
 
@@ -221,7 +292,7 @@ void AutostartManager::readDefinitions()
 
 void AutostartManager::writeDefinitions()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/takeoff.def");
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
@@ -231,10 +302,15 @@ void AutostartManager::writeDefinitions()
     for (const App *app: m_activeAppsModel->apps()) {
         out << "###" << app->packageName() << "\n";
 
-        if (!app->startCmdCustom().isEmpty())
-            out << app->startCmdCustom();
-        else
-            out << app->startCmd();
+        if ( (app->useLibraryStartCmd() || m_libraryAPI->autoUse())
+             && !app->startCmdLibrary().isEmpty() ) {
+            out << app->startCmdLibrary();
+        } else {
+            if (!app->startCmdCustom().isEmpty())
+                out << app->startCmdCustom();
+            else
+                out << app->startCmd();
+        }
 
         out << "\n";
     }

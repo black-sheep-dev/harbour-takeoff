@@ -118,6 +118,12 @@ QVariant AppListModel::data(const QModelIndex &index, int role) const
     case StartCmdCustomRole:
         return app->startCmdCustom();
 
+    case StartCmdLibraryRole:
+        return app->startCmdLibrary();
+
+    case UseLibraryCmdRole:
+        return app->useLibraryStartCmd();
+
     default:
         return QVariant();
     }
@@ -163,6 +169,8 @@ QHash<int, QByteArray> AppListModel::roleNames() const
     roles[PackageNameRole]      = "package_name";
     roles[StartCmdRole]         = "start_cmd";
     roles[StartCmdCustomRole]   = "start_cmd_custom";
+    roles[StartCmdLibraryRole]  = "start_cmd_library";
+    roles[UseLibraryCmdRole]    = "use_library_cmd";
 
     return roles;
 }

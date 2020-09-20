@@ -16,7 +16,9 @@ public:
         NameRole,
         PackageNameRole,
         StartCmdRole,
-        StartCmdCustomRole
+        StartCmdCustomRole,
+        StartCmdLibraryRole,
+        UseLibraryCmdRole
     };
     Q_ENUMS(AppRoles)
 
