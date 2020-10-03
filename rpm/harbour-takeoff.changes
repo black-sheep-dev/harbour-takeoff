@@ -12,7 +12,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Sun Sep 20 2020 Black Sheep <blackhsheep@nubecula.org> 0.6.0-1
+* Sat Oct 03 2020 Black Sheep <blackhsheep@nubecula.org> 0.6.1-1
+- 0.6.1-1
+- Code cleanup
+
 - 0.6.0-1
 - Add app library with start commands
 - Add access to remote library api

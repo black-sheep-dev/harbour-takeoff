@@ -49,14 +49,14 @@ public slots:
     void setUseLibraryStartCmd(bool enable);
 
 private:
-    bool m_autostart;
+    bool m_autostart{false};
     QString m_icon;
     QString m_name;
     QString m_packageName;
     QString m_startCmd;
     QString m_startCmdCustom;
     QString m_startCmdLibrary;
-    bool m_useLibraryStartCmd;
+    bool m_useLibraryStartCmd{false};
 };
 
 #endif // APP_H

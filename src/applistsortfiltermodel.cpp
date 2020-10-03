@@ -16,7 +16,7 @@ void AppListSortFilterModel::sortModel()
 
 void AppListSortFilterModel::setSourceModel(QAbstractItemModel *sourceModel)
 {
-    AppListModel *model = qobject_cast<AppListModel *>(sourceModel);
+    auto *model = qobject_cast<AppListModel *>(sourceModel);
     connect(model, &AppListModel::changed, this, &AppListSortFilterModel::sortModel);
 
     QSortFilterProxyModel::setSourceModel(sourceModel);

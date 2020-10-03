@@ -8,9 +8,7 @@
 #include <thread>
 
 Launcher::Launcher()
-{
-
-}
+= default;
 
 void Launcher::takeoff(bool wait)
 {

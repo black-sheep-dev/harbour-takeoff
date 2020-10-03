@@ -2,14 +2,12 @@
 
 App::App(QObject *parent) :
     QObject(parent),
-    m_autostart(false),
     m_icon(QString()),
     m_name(QString()),
     m_packageName(QString()),
     m_startCmd(QString()),
     m_startCmdCustom(QString()),
-    m_startCmdLibrary(QString()),
-    m_useLibraryStartCmd(false)
+    m_startCmdLibrary(QString())
 {
 
 }

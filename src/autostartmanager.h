@@ -16,7 +16,7 @@ class AutostartManager : public QObject
 
 public:
     explicit AutostartManager(QObject *parent = nullptr);
-    ~AutostartManager();
+    ~AutostartManager() override;
 
     Q_INVOKABLE AppListModel *activeApps();
     Q_INVOKABLE QString activeAppsCount() const;

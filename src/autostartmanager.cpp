@@ -214,12 +214,12 @@ void AutostartManager::loadApps()
 
 void AutostartManager::readCustomSettings()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/custom.def");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/custom.def"));
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
-    QJsonParseError error;
+    QJsonParseError error{};
 
     const QJsonObject customs = QJsonDocument::fromJson(file.readAll(), &error).object();
 
@@ -227,7 +227,7 @@ void AutostartManager::readCustomSettings()
 
     if (error.error) {
 #ifdef QT_DEBUG
-        qDebug() << "ERROR PARSING JSON";
+        qDebug() << QStringLiteral("ERROR PARSING JSON");
 #endif
         return;
     }
@@ -240,7 +240,7 @@ void AutostartManager::readCustomSettings()
 
 void AutostartManager::writeCustomSettings()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/custom.def");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/custom.def"));
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
@@ -270,7 +270,7 @@ void AutostartManager::writeCustomSettings()
 
 void AutostartManager::readDefinitions()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/takeoff.def");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/takeoff.def"));
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
@@ -292,7 +292,7 @@ void AutostartManager::readDefinitions()
 
 void AutostartManager::writeDefinitions()
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/takeoff.def");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/takeoff.def"));
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;

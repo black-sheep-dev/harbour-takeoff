@@ -21,7 +21,7 @@ class AppLibraryAPI : public QObject
 
 public:
     explicit AppLibraryAPI(QObject *parent = nullptr);
-    ~AppLibraryAPI();
+    ~AppLibraryAPI() override;
 
     Q_INVOKABLE void resetSettings();
     Q_INVOKABLE void saveSettings();
@@ -62,13 +62,13 @@ private:
     void writeSettings();
 
     QJsonObject m_localLibrary;
-    quint16 m_localLibraryVersion;
-    QNetworkAccessManager *m_manager;
+    quint16 m_localLibraryVersion{0};
+    QNetworkAccessManager *m_manager{nullptr};
 
     // properties
-    bool m_active;
-    bool m_autoUpdate;
-    bool m_autoUse;
+    bool m_active{false};
+    bool m_autoUpdate{false};
+    bool m_autoUse{false};
     QString m_url;
 };
 

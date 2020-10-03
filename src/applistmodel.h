@@ -20,11 +20,11 @@ public:
         StartCmdLibraryRole,
         UseLibraryCmdRole
     };
-    Q_ENUMS(AppRoles)
+    Q_ENUM(AppRoles)
 
     explicit AppListModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE App *app(const int index);
+    Q_INVOKABLE App *app(int index);
     QList<App *> apps() const;
 
     // reorder function

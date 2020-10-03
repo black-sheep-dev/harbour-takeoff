@@ -16,8 +16,6 @@
 
 AppLibraryAPI::AppLibraryAPI(QObject *parent) :
     QObject(parent),
-    m_localLibrary(QJsonObject()),
-    m_localLibraryVersion(0),
     m_manager(new QNetworkAccessManager(this))
 {
     connect(m_manager, &QNetworkAccessManager::finished, this, &AppLibraryAPI::onReply);
@@ -112,12 +110,12 @@ void AppLibraryAPI::setActive(bool enable)
     emit activeChanged(m_active);
 }
 
-void AppLibraryAPI::setAutoUpdate(bool autoUpdate)
+void AppLibraryAPI::setAutoUpdate(bool enable)
 {
-    if (m_autoUpdate == autoUpdate)
+    if (m_autoUpdate == enable)
         return;
 
-    m_autoUpdate = autoUpdate;
+    m_autoUpdate = enable;
     emit autoUpdateChanged(m_autoUpdate);
 }
 
@@ -154,13 +152,13 @@ void AppLibraryAPI::onReply(QNetworkReply *reply)
     qDebug() << data;
 #endif
 
-    QJsonParseError error;
+    QJsonParseError error{};
 
     const QJsonObject library = QJsonDocument::fromJson(data, &error).object();
 
     if (error.error) {
 #ifdef QT_DEBUG
-    qDebug() << "JSON PARSE ERROR";
+    qDebug() << QStringLiteral("JSON PARSE ERROR");
 #endif
         return;
     }
@@ -184,7 +182,7 @@ void AppLibraryAPI::readLocalLibrary()
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
-    QJsonParseError error;
+    QJsonParseError error{};
 
     const QJsonObject library = QJsonDocument::fromJson(file.readAll(), &error).object();
 
