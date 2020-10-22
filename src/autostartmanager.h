@@ -14,6 +14,8 @@ class AutostartManager : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(int startDelay READ startDelay WRITE setStartDelay NOTIFY startDelayChanged)
+
 public:
     explicit AutostartManager(QObject *parent = nullptr);
     ~AutostartManager() override;
@@ -23,10 +25,12 @@ public:
     Q_INVOKABLE AppListModel *apps();
     Q_INVOKABLE AppLibraryAPI *libraryAPI();
 
-    // properties
     bool apiActive() const;
     bool apiAutoUse() const;
     QString apiUrl() const;
+
+    // properties
+    int startDelay() const;
 
 public slots:
     Q_INVOKABLE void execute(const QString &cmd);
@@ -37,6 +41,13 @@ public slots:
     Q_INVOKABLE void applyChanges();
     Q_INVOKABLE void onAutostartChanged(bool enabled);
 
+    // properties
+    void setStartDelay(int secs);
+
+signals:
+    // properties
+    void startDelayChanged(int secs);
+
 private slots:
     void onLibraryUpdate();
 
@@ -45,17 +56,25 @@ private:
     QString getStartCmd(const QString &cmd) const;
     void loadApps();
 
+    void writeStartScript();
+
     void readCustomSettings();
     void writeCustomSettings();
 
     void readDefinitions();
     void writeDefinitions();
 
+    void readSettings();
+    void writeSettings();
+
     QStringList m_activeApps;
     AppListModel *m_activeAppsModel;
     AppListModel *m_appsModel;
 
     AppLibraryAPI *m_libraryAPI;
+
+    // properties
+    int m_startDelay{0};
 };
 
 #endif // AUTOSTARTMANAGER_H

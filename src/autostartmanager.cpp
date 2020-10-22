@@ -20,10 +20,14 @@ AutostartManager::AutostartManager(QObject *parent) :
 {
     connect(m_activeAppsModel, &AppListModel::changed, this, &AutostartManager::applyChanges);
     connect(m_libraryAPI, &AppLibraryAPI::libraryUpdated, this, &AutostartManager::onLibraryUpdate);
+
+    readSettings();
+    writeStartScript();
 }
 
 AutostartManager::~AutostartManager()
 {
+    writeSettings();
     writeCustomSettings();
     writeDefinitions();
 }
@@ -46,6 +50,11 @@ AppListModel *AutostartManager::apps()
 AppLibraryAPI *AutostartManager::libraryAPI()
 {
     return m_libraryAPI;
+}
+
+int AutostartManager::startDelay() const
+{
+    return m_startDelay;
 }
 
 void AutostartManager::execute(const QString &cmd)
@@ -79,6 +88,7 @@ void AutostartManager::applyChanges()
 {
     writeCustomSettings();
     writeDefinitions();
+    writeStartScript();
 }
 
 void AutostartManager::onAutostartChanged(bool enabled)
@@ -97,6 +107,17 @@ void AutostartManager::onAutostartChanged(bool enabled)
     }
 
     writeDefinitions();
+}
+
+void AutostartManager::setStartDelay(int secs)
+{
+    if (m_startDelay == secs)
+        return;
+
+    m_startDelay = secs;
+    emit startDelayChanged(m_startDelay);
+
+    writeSettings();
 }
 
 void AutostartManager::onLibraryUpdate()
@@ -212,6 +233,21 @@ void AutostartManager::loadApps()
     }
 }
 
+void AutostartManager::writeStartScript()
+{
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/takeoff.sh"));
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QTextStream out(&file);
+    out << QStringLiteral("#!/bin/bash\n");
+    out << QString("sleep %1\n").arg(QString::number(m_startDelay));
+    out << QStringLiteral("/usr/bin/invoker -n -s --type=silica-qt5 /usr/bin/harbour-takeoff --takeoff");
+
+    file.close();
+}
+
 void AutostartManager::readCustomSettings()
 {
     QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/custom.def"));
@@ -316,4 +352,22 @@ void AutostartManager::writeDefinitions()
     }
 
     file.close();
+}
+
+void AutostartManager::readSettings()
+{
+    QSettings settings;
+
+    settings.beginGroup(QStringLiteral("STARTUP"));
+    m_startDelay = settings.value(QStringLiteral("delay"), 0).toInt();
+    settings.endGroup();
+}
+
+void AutostartManager::writeSettings()
+{
+    QSettings settings;
+
+    settings.beginGroup(QStringLiteral("STARTUP"));
+    settings.setValue(QStringLiteral("delay"), m_startDelay);
+    settings.endGroup();
 }

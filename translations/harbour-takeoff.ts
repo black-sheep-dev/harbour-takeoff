@@ -155,5 +155,13 @@
         <source>Use the library from remote host to get good start commands for your apps. Be aware that this could be a potential security risk because the commands will be exectuted on your device!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Startup Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delay in seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

@@ -155,5 +155,13 @@
         <source>Use the library from remote host to get good start commands for your apps. Be aware that this could be a potential security risk because the commands will be exectuted on your device!</source>
         <translation>Benutzt die Bibliothek von einem Server um gute Startbefehle für deine Apps zu bekommen. Da die Startbefehle auf deinem Gerät ausgeführt werden, stellt das ein potenzielles Sicherheitsrisiko da!</translation>
     </message>
+    <message>
+        <source>Startup Delay</source>
+        <translation>Startverzögerung</translation>
+    </message>
+    <message>
+        <source>Delay in seconds</source>
+        <translation>Verzögerung in Sekunden</translation>
+    </message>
 </context>
 </TS>

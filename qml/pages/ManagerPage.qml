@@ -50,6 +50,8 @@ Page {
             anchors.top: header.bottom
             anchors.bottom: parent.bottom
 
+            clip: true
+
             model: AppListSortFilterModel {
                 id: filterModel
                 sortRole: AppListModel.NameRole

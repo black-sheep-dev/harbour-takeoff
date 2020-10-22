@@ -27,9 +27,33 @@ Page {
         Column {
             id: column
             width:parent.width
+            spacing: Theme.paddingMedium
 
             PageHeader {
                 title: qsTr("Settings")
+            }
+
+            SectionHeader {
+                text: qsTr("Startup Delay")
+            }
+
+            TextField {
+                id: startDelayField
+                width: parent.width
+
+                label: qsTr("Delay in seconds")
+
+                inputMethodHints: Qt.ImhDigitsOnly
+                validator: IntValidator {
+                    bottom: 0
+                    top: 120
+                }
+
+                text: AutostartManager.startDelay
+            }
+
+            SectionHeader {
+                text: qsTr("Library API")
             }
 
             TextSwitch {
@@ -40,10 +64,6 @@ Page {
                 Component.onCompleted: checked = AutostartManager.libraryAPI().autoUse
             }
 
-            SectionHeader {
-                text: qsTr("Library API")
-            }
-
             TextSwitch {
                 id: apiActiveSwitch
                 text: qsTr("Use library API")
@@ -51,6 +71,7 @@ Page {
 
                 Component.onCompleted: checked = AutostartManager.libraryAPI().active
             }
+
             TextSwitch {
                 id: apiAutoUpdateSwitch
 
@@ -60,11 +81,6 @@ Page {
                 description: qsTr("Activating this option will update the library automatically on app start.")
 
                 Component.onCompleted: checked = AutostartManager.libraryAPI().autoUpdate
-            }
-
-            Item {
-                width: 1
-                height: Theme.paddingMedium
             }
 
             TextField {
@@ -91,6 +107,10 @@ Page {
         AutostartManager.libraryAPI().autoUse = apiAutoUseSwitch.checked
         AutostartManager.libraryAPI().url = urlField.text
         AutostartManager.libraryAPI().saveSettings()
+
+        if (startDelayField.acceptableInput) {
+            AutostartManager.setStartDelay(startDelayField.text)
+            AutostartManager.applyChanges()
+        }
     }
 }
-

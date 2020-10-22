@@ -4,9 +4,10 @@ Requires=lipstick.service
 After=ofono.service lipstick.service
 
 [Service]
-Type=simple
+Type=oneshot
+RemainAfterExit=true
 ExecStartPre=/bin/sleep 5
 ExecStart=/home/nemo/.config/harbour-takeoff/takeoff.sh
 
 [Install]
-WantedBy=post-user-session.target
+WantedBy=user-session.target
