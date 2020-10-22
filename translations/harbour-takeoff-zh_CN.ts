@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
-        <translation>Takeoff 是用于控制设备启动后的软件自启情况管理器。</translation>
+        <translation>Takeoff 是一个用于设备启动之后的软件自启情况管理器。</translation>
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
@@ -79,11 +79,11 @@
     </message>
     <message>
         <source>Use start command from library</source>
-        <translation type="unfinished"></translation>
+        <translation>使用来自库中的启动命令</translation>
     </message>
     <message>
         <source>If you have problems with an app not starting, you can use a start command from the app library.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果你遇到某个软件未启动的问题，可以使用来自软件库的启动命令。</translation>
     </message>
 </context>
 <context>
@@ -102,66 +102,66 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <source>Reset to default values</source>
-        <translation type="unfinished"></translation>
+        <translation>重置为默认值</translation>
     </message>
     <message>
         <source>Library url</source>
-        <translation type="unfinished"></translation>
+        <translation>库url</translation>
     </message>
     <message>
         <source>Enter library url</source>
-        <translation type="unfinished"></translation>
+        <translation>输入库url</translation>
     </message>
     <message>
         <source>Automatic library updates</source>
-        <translation type="unfinished"></translation>
+        <translation>自动更新库</translation>
     </message>
     <message>
         <source>Use library commands by default</source>
-        <translation type="unfinished"></translation>
+        <translation>默认使用库命令</translation>
     </message>
     <message>
         <source>Activating this option will overwrite your custom command settings! If disabled you can activate library command for every app individually.</source>
-        <translation type="unfinished"></translation>
+        <translation>开启此选项会覆盖你的自定义命令设置！如果禁用此选项，你可以单独为每个软件激活库命令。</translation>
     </message>
     <message>
         <source>Library API</source>
-        <translation type="unfinished"></translation>
+        <translation>库API</translation>
     </message>
     <message>
         <source>Update library</source>
-        <translation type="unfinished"></translation>
+        <translation>更新库</translation>
     </message>
     <message>
         <source>Use library API</source>
-        <translation type="unfinished"></translation>
+        <translation>使用库API</translation>
     </message>
     <message>
         <source>Activating this option will update the library automatically on app start.</source>
-        <translation type="unfinished"></translation>
+        <translation>开启此选项会在软件启动之时自动更新库。</translation>
     </message>
     <message>
         <source>Use the library from remote host to get good start commands for your apps. Be aware that this could be a potential security risk because the commands will be exectuted on your device!</source>
-        <translation type="unfinished"></translation>
+        <translation>使用来自远程主机的库来为你的软件获取适当的启动命令。请注意，这可能导致潜在的安全风险。因为此命令会在你的设备上执行。</translation>
     </message>
     <message>
         <source>Startup Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>启动延迟</translation>
     </message>
     <message>
         <source>Delay in seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>延迟秒数</translation>
     </message>
 </context>
 </TS>
