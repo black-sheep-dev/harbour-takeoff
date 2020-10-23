@@ -21,69 +21,69 @@
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished"></translation>
+        <translation>Om du gillar mitt arbete, kanske du bjuder på en öl?</translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished">Om</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <source>Manage</source>
-        <translation type="unfinished"></translation>
+        <translation>Hantera</translation>
     </message>
     <message>
         <source>Takeoff</source>
-        <translation type="unfinished"></translation>
+        <translation>Takeoff</translation>
     </message>
     <message>
         <source>Active Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiva appar</translation>
     </message>
     <message>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytta upp</translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytta ner</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigera</translation>
     </message>
 </context>
 <context>
     <name>EditAppDialog</name>
     <message>
         <source>Enter start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange startkommando</translation>
     </message>
     <message>
         <source>Start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Startkommando</translation>
     </message>
     <message>
         <source>Edit start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigera startkommando</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Återställ</translation>
+        <translation>Återställ</translation>
     </message>
     <message>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Kör</translation>
     </message>
     <message>
         <source>Use start command from library</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd startkommando från biblioteket</translation>
     </message>
     <message>
         <source>If you have problems with an app not starting, you can use a start command from the app library.</source>
-        <translation type="unfinished"></translation>
+        <translation>Om du har problem med att en app inte startar, kan du använda ett kommando från app-biblioteket.</translation>
     </message>
 </context>
 <context>
@@ -102,66 +102,66 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Inställningar</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Reset to default values</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ standardvärden</translation>
     </message>
     <message>
         <source>Library url</source>
-        <translation type="unfinished"></translation>
+        <translation>Biblioteks-URL</translation>
     </message>
     <message>
         <source>Enter library url</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange URL till biblioteket</translation>
     </message>
     <message>
         <source>Automatic library updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatiska biblioteksuppdateringar</translation>
     </message>
     <message>
         <source>Use library commands by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd bibliotekskommandon som standard</translation>
     </message>
     <message>
         <source>Activating this option will overwrite your custom command settings! If disabled you can activate library command for every app individually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivering av det här alternativet kommer att skriva över dina anpassade kommandoinställningar. Vid avaktivering kan du aktivera bibliotekskommando för varje app individuellt.</translation>
     </message>
     <message>
         <source>Library API</source>
-        <translation type="unfinished"></translation>
+        <translation>Biblioteks-API</translation>
     </message>
     <message>
         <source>Update library</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera bibliotek</translation>
     </message>
     <message>
         <source>Use library API</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd bibliotekets API</translation>
     </message>
     <message>
         <source>Activating this option will update the library automatically on app start.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivering av det här alternativet kommer att uppdatera biblioteket automatiskt vid appstart.</translation>
     </message>
     <message>
         <source>Use the library from remote host to get good start commands for your apps. Be aware that this could be a potential security risk because the commands will be exectuted on your device!</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd bibliotek från en fjärrdator för att få bra startkommandon till dina appar. Var medveten om att detta kan vara en potentiell säkerhetsrisk eftersom kommandona kommer att köras på din enhet!</translation>
     </message>
     <message>
         <source>Startup Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Startfördröjning</translation>
     </message>
     <message>
         <source>Delay in seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Fördröjning i sekunder</translation>
     </message>
 </context>
 </TS>
