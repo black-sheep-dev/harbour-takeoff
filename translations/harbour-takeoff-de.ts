@@ -54,6 +54,14 @@
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
+    <message>
+        <source>No active apps</source>
+        <translation>Keine aktiven Apps</translation>
+    </message>
+    <message>
+        <source>Pull down to add apps in manager</source>
+        <translation>Nach unten ziehen um Apps in der Verwaltung hinzuzufügen</translation>
+    </message>
 </context>
 <context>
     <name>EditAppDialog</name>

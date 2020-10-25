@@ -103,6 +103,13 @@ Page {
                 }
             }
         }
+
+        ViewPlaceholder {
+            enabled: listView.count == 0
+            text: qsTr("No active apps")
+            hintText: qsTr("Pull down to add apps in manager")
+        }
+
         VerticalScrollDecorator {}
     }
 }

@@ -54,6 +54,14 @@
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
+    <message>
+        <source>No active apps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to add apps in manager</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditAppDialog</name>
