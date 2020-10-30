@@ -62,6 +62,14 @@
         <source>Pull down to add apps in manager</source>
         <translation>Nach unten ziehen um Apps in der Verwaltung hinzuzufügen</translation>
     </message>
+    <message>
+        <source>Disable</source>
+        <translation>Deaktivieren</translation>
+    </message>
+    <message>
+        <source>Disabling autostart of app</source>
+        <translation>Deaktiviere den Autostart der App</translation>
+    </message>
 </context>
 <context>
     <name>EditAppDialog</name>

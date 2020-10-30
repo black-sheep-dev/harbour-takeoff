@@ -47,14 +47,24 @@ Page {
             width: listView.width
             contentHeight: Theme.itemSizeLarge
 
+            RemorseItem { id: remorse }
+
             menu: ContextMenu {
                 MenuItem {
-                    text: qsTr("Move up");
+                    text: qsTr("Move up")
                     onClicked: AutostartManager.activeApps().moveUp(index)
                 }
                 MenuItem {
-                    text: qsTr("Move down");
+                    text: qsTr("Move down")
                     onClicked: AutostartManager.activeApps().moveDown(index)
+                }
+                MenuItem {
+                    text: qsTr("Disable")
+                    onClicked: remorse.execute(delegate, qsTr("Disabling autostart of app"), function() {
+                        autostart = false
+                        AutostartManager.activeApps().removeApp(AutostartManager.activeApps().app(index))
+                        AutostartManager.applyChanges()
+                    })
                 }
                 MenuItem {
                     text: qsTr("Edit");

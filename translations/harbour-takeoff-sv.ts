@@ -62,6 +62,14 @@
         <source>Pull down to add apps in manager</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling autostart of app</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditAppDialog</name>
