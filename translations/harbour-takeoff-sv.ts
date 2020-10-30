@@ -56,19 +56,19 @@
     </message>
     <message>
         <source>No active apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga aktiva appar</translation>
     </message>
     <message>
         <source>Pull down to add apps in manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Dra neråt för att lägga till appar i hanteraren</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Inaktivera</translation>
     </message>
     <message>
         <source>Disabling autostart of app</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaktivera automatisk appstart</translation>
     </message>
 </context>
 <context>
