@@ -56,16 +56,14 @@ void AppLibraryAPI::updateLibrary()
 
     if (!url.isValid()) {
 #ifdef QT_DEBUG
-        qDebug() << "INVALID URL";
+        qDebug() << QStringLiteral("INVALID URL");
         qDebug() << url;
 #endif
         return;
     }
 
     QNetworkRequest request(url);
-
-    if (m_url.contains("https"))
-        request.setSslConfiguration(QSslConfiguration::defaultConfiguration());
+    request.setSslConfiguration(QSslConfiguration::defaultConfiguration());
 
     request.setRawHeader("Cache-Control", "no-cache");
     request.setRawHeader("Accept", "application/json");
@@ -174,9 +172,9 @@ void AppLibraryAPI::readLocalLibrary()
     QFile file;
 
     if (m_active)
-        file.setFileName(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/app_library.json");
+        file.setFileName(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/app_library.json"));
     else
-        file.setFileName(":/files/library/harbour-takeoff-app-library.json");
+        file.setFileName(QStringLiteral(":/files/library/harbour-takeoff-app-library.json"));
 
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -190,7 +188,7 @@ void AppLibraryAPI::readLocalLibrary()
 
     if (error.error) {
 #ifdef QT_DEBUG
-    qDebug() << "JSON PARSE ERROR";
+    qDebug() << QStringLiteral("JSON PARSE ERROR");
 #endif
         return;
     }
@@ -205,12 +203,12 @@ void AppLibraryAPI::updateLocalLibrary(const QJsonObject &library)
 
     if (version <= m_localLibraryVersion) {
 #ifdef QT_DEBUG
-        qDebug() << "LIBRARY VERSION OLD/SAME";
+        qDebug() << QStringLiteral("LIBRARY VERSION OLD/SAME");
 #endif
         return;
     }
 
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + "/app_library.json");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/app_library.json"));
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;

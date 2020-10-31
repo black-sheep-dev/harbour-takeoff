@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
             Q_UNUSED(engine)
             Q_UNUSED(scriptEngine)
 
-            auto *manager = new AutostartManager();
+            auto *manager = new AutostartManager;
 
             return manager;
         });

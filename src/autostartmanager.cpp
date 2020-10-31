@@ -146,8 +146,8 @@ QString AutostartManager::getStartCmd(const QString &cmd) const
     // check if binary exists
     QString binary = parts.last();
 
-    if (!binary.startsWith(QStringLiteral("/usr/bin/"))) {
-        binary.prepend("/usr/bin/");
+    if (!binary.startsWith(QLatin1String("/usr/bin/"))) {
+        binary.prepend(QStringLiteral("/usr/bin/"));
     }
 
     if (!QFile(binary).exists())
@@ -156,10 +156,10 @@ QString AutostartManager::getStartCmd(const QString &cmd) const
     // prepare start cmd
     QString start("/usr/bin/invoker -n -s ");
 
-    const QStringList type = parts.filter("--type=");
+    const QStringList type = parts.filter(QLatin1String("--type="));
 
     if (type.isEmpty())
-        start.append("--type=silica-qt5");
+        start.append(QStringLiteral("--type=silica-qt5"));
     else
         start.append(type.first());
 
@@ -173,7 +173,7 @@ QString AutostartManager::getStartCmd(const QString &cmd) const
 void AutostartManager::loadApps()
 {
     QDirIterator it(QStringLiteral("/usr/share/applications"),
-                    QStringList() << "*.desktop",
+                    QStringList() << QStringLiteral("*.desktop"),
                     QDir::Files,
                     QDirIterator::NoIteratorFlags);
 
@@ -191,7 +191,7 @@ void AutostartManager::loadApps()
 
         const QString cmd = ini.value(QStringLiteral("Exec")).toString().simplified();
 
-        if ( ini.value(QStringLiteral("Type")).toString() != "Application"
+        if ( ini.value(QStringLiteral("Type")).toString() != QLatin1String("Application")
              || ini.value(QStringLiteral("NoDisplay"), false).toBool()
              || ini.contains(QStringLiteral("NotShowIn"))
              || cmd.isEmpty() )
@@ -215,7 +215,8 @@ void AutostartManager::loadApps()
     QList<App *> active;
     active.reserve(m_activeApps.count());
 
-    for (App *app: m_appsModel->apps()) {
+    const QList<App *> apps = m_appsModel->apps();
+    for (App *app: apps) {
         const int idx = m_activeApps.indexOf(app->packageName());
 
         if (idx < 0)
@@ -228,7 +229,7 @@ void AutostartManager::loadApps()
     m_activeAppsModel->setApps(active);
 
     // create connections
-    for (App *app: m_appsModel->apps()) {
+    for (App *app: apps) {
         connect(app, &App::autostartChanged, this, &AutostartManager::onAutostartChanged);
     }
 }
@@ -268,7 +269,8 @@ void AutostartManager::readCustomSettings()
         return;
     }
 
-    for (App *app : m_appsModel->apps()) {
+    const QList<App *> apps = m_appsModel->apps();
+    for (App *app : apps) {
         app->setUseLibraryStartCmd(customs.value(app->packageName()).toObject().value(QStringLiteral("use_library_cmd")).toBool(false));
         app->setStartCmdCustom(customs.value(app->packageName()).toObject().value(QStringLiteral("custom_start_cmd")).toString());
     }
@@ -283,7 +285,8 @@ void AutostartManager::writeCustomSettings()
 
     QJsonObject customs;
 
-    for (App *app : m_appsModel->apps()) {
+    const QList<App *> apps = m_appsModel->apps();
+    for (App *app : apps) {
         QJsonObject item;
         item.insert(QStringLiteral("use_library_cmd"), app->useLibraryStartCmd());
         if (!app->startCmdCustom().isEmpty())
@@ -335,7 +338,8 @@ void AutostartManager::writeDefinitions()
 
     QTextStream out(&file);
 
-    for (const App *app: m_activeAppsModel->apps()) {
+    const QList<App *> apps = m_appsModel->apps();
+    for (const App *app: apps) {
         out << "###" << app->packageName() << "\n";
 
         if ( (app->useLibraryStartCmd() || m_libraryAPI->autoUse())
