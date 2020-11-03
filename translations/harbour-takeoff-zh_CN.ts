@@ -120,6 +120,10 @@
         <source>Settings</source>
         <translation>设置</translation>
     </message>
+    <message>
+        <source>Show desktop file</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

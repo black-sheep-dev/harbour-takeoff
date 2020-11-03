@@ -62,7 +62,7 @@ Page {
                     text: qsTr("Disable")
                     onClicked: remorse.execute(delegate, qsTr("Disabling autostart of app"), function() {
                         autostart = false
-                        AutostartManager.activeApps().removeApp(AutostartManager.activeApps().app(index))
+                        AutostartManager.activeApps().removeApp(index)
                         AutostartManager.applyChanges()
                     })
                 }

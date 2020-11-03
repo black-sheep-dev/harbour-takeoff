@@ -12,6 +12,7 @@ class AppListModel : public QAbstractListModel
 public:
     enum AppRoles {
         AutostartRole      = Qt::UserRole + 1,
+        DesktopFileData,
         IconRole,
         NameRole,
         PackageNameRole,
@@ -36,7 +37,8 @@ signals:
 
 public slots:
     void addApp(App *app);
-    void removeApp(App *app);
+    Q_INVOKABLE void removeApp(int index);
+    Q_INVOKABLE void removeApp(App *app);
     void setApps(const QList<App *> &apps);
 
     void reset();

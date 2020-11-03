@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # VERSION
-VERSION = 0.6.8
+VERSION = 0.6.9
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # The name of your application
@@ -41,6 +41,7 @@ DISTFILES += qml/harbour-takeoff.qml \
     qml/dialogs/EditAppDialog.qml \
     qml/pages/AboutPage.qml \
     qml/pages/ActiveAppsPage.qml \
+    qml/pages/DesktopFileViewerPage.qml \
     qml/pages/ManagerPage.qml \
     qml/pages/SettingsPage.qml \
     rpm/harbour-takeoff.changes \

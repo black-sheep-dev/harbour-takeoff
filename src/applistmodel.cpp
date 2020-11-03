@@ -1,7 +1,5 @@
 #include "applistmodel.h"
 
-#include <QDebug>
-
 AppListModel::AppListModel(QObject *parent) :
     QAbstractListModel(parent)
 {
@@ -55,6 +53,16 @@ void AppListModel::addApp(App *app)
     endInsertRows();
 }
 
+void AppListModel::removeApp(int index)
+{
+    if (index < 0 || index >= m_apps.count())
+        return;
+
+    beginRemoveRows(QModelIndex(), index, index);
+    m_apps.takeAt(index);
+    endRemoveRows();
+}
+
 void AppListModel::removeApp(App *app)
 {
     const int index = m_apps.indexOf(app);
@@ -102,6 +110,9 @@ QVariant AppListModel::data(const QModelIndex &index, int role) const
 
     case AutostartRole:
         return app->autostart();
+
+    case DesktopFileData:
+        return app->desktopFileData();
 
     case IconRole:
         return app->icon();
@@ -164,6 +175,7 @@ QHash<int, QByteArray> AppListModel::roleNames() const
     QHash<int, QByteArray> roles;
 
     roles[AutostartRole]        = "autostart";
+    roles[DesktopFileData]      = "desktop_file_data";
     roles[IconRole]             = "icon";
     roles[NameRole]             = "name";
     roles[PackageNameRole]      = "package_name";

@@ -120,6 +120,10 @@
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
+    <message>
+        <source>Show desktop file</source>
+        <translation>Zeige Desktop Datei</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

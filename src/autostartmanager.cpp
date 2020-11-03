@@ -178,14 +178,14 @@ void AutostartManager::loadApps()
                     QDirIterator::NoIteratorFlags);
 
     while (it.hasNext()) {
-        QFile file(it.next());
+        const QFileInfo info = QFileInfo(it.next());
 
         // remove  apps
-        if (QFileInfo(file).baseName().startsWith("apkd_"))
+        if (info.baseName().startsWith("apkd_"))
             continue;
 
         // read *.desktop file
-        QSettings ini(file.fileName(), QSettings::IniFormat);
+        QSettings ini(info.filePath(), QSettings::IniFormat);
 
         ini.beginGroup(QStringLiteral("Desktop Entry"));
 
@@ -201,14 +201,23 @@ void AutostartManager::loadApps()
         App *app = new App(this);
 
         app->setIcon(ini.value(QStringLiteral("Icon")).toString());
-        app->setPackageName(QFileInfo(file).baseName());
+        app->setPackageName(info.baseName());
         app->setName(ini.value(QStringLiteral("Name")).toString());
 
         app->setStartCmd(cmd);
 
-        m_appsModel->addApp(app);
-
         ini.endGroup();
+
+        // read desktop file data
+        QFile file(info.filePath());
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+            continue;
+
+        app->setDesktopFileData(QString(file.readAll()));
+
+        file.close();
+
+        m_appsModel->addApp(app);
     }
 
     // check if app is active
@@ -338,7 +347,7 @@ void AutostartManager::writeDefinitions()
 
     QTextStream out(&file);
 
-    const QList<App *> apps = m_appsModel->apps();
+    const QList<App *> apps = m_activeAppsModel->apps();
     for (const App *app: apps) {
         out << "###" << app->packageName() << "\n";
 

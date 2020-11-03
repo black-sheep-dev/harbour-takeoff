@@ -17,6 +17,11 @@ bool App::autostart() const
     return m_autostart;
 }
 
+QString App::desktopFileData() const
+{
+    return m_desktopFileData;
+}
+
 QString App::icon() const
 {
     return m_icon;
@@ -59,6 +64,15 @@ void App::setAutostart(bool enabled)
 
     m_autostart = enabled;
     emit autostartChanged(m_autostart);
+}
+
+void App::setDesktopFileData(const QString &data)
+{
+    if (m_desktopFileData == data)
+        return;
+
+    m_desktopFileData = data;
+    emit desktopFileDataChanged(m_desktopFileData);
 }
 
 void App::setIcon(const QString &icon)

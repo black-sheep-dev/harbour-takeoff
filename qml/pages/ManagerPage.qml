@@ -61,12 +61,21 @@ Page {
             }
 
 
-            delegate: BackgroundItem {
+            delegate: ListItem {
                 id: delegate
 
                 width: parent.width
-                height: Theme.itemSizeLarge
                 contentHeight: Theme.itemSizeLarge
+
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("Show desktop file");
+                        onClicked: pageStack.push(Qt.resolvedUrl("DesktopFileViewerPage.qml"), {
+                                                      title: model.name,
+                                                      content: model.desktop_file_data
+                                                  })
+                    }
+                }
 
                 Row {
                     width: parent.width - 2 * x

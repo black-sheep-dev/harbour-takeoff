@@ -8,6 +8,7 @@ class App : public QObject
     Q_OBJECT
 
     Q_PROPERTY(bool autostart READ autostart WRITE setAutostart NOTIFY autostartChanged)
+    Q_PROPERTY(QString desktopFileData READ desktopFileData WRITE setDesktopFileData NOTIFY desktopFileDataChanged)
     Q_PROPERTY(QString icon READ icon WRITE setIcon NOTIFY iconChanged)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString packageName READ packageName WRITE setPackageName NOTIFY packageNameChanged)
@@ -20,6 +21,7 @@ public:
     explicit App(QObject *parent = nullptr);
 
     bool autostart() const;
+    QString desktopFileData() const;
     QString icon() const;
     QString name() const;
     QString packageName() const;
@@ -30,6 +32,7 @@ public:
 
 signals:
     void autostartChanged(bool enabled);
+    void desktopFileDataChanged(const QString &data);
     void iconChanged(const QString &icon);
     void nameChanged(const QString &name);
     void packageNameChanged(const QString &name);
@@ -40,6 +43,7 @@ signals:
 
 public slots:
     void setAutostart(bool enabled = true);
+    void setDesktopFileData(const QString &data);
     void setIcon(const QString &icon);
     void setName(const QString &name);
     void setPackageName(const QString &name);
@@ -50,6 +54,7 @@ public slots:
 
 private:
     bool m_autostart{false};
+    QString m_desktopFileData;
     QString m_icon;
     QString m_name;
     QString m_packageName;
