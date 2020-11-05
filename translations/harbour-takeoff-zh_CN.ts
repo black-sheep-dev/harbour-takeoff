@@ -56,19 +56,19 @@
     </message>
     <message>
         <source>No active apps</source>
-        <translation type="unfinished"></translation>
+        <translation>暂无活跃软件</translation>
     </message>
     <message>
         <source>Pull down to add apps in manager</source>
-        <translation type="unfinished"></translation>
+        <translation>下拉以添加软件于管理器</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用</translation>
     </message>
     <message>
         <source>Disabling autostart of app</source>
-        <translation type="unfinished"></translation>
+        <translation>正在禁用软件自启</translation>
     </message>
 </context>
 <context>
@@ -122,7 +122,7 @@
     </message>
     <message>
         <source>Show desktop file</source>
-        <translation type="unfinished"></translation>
+        <translation>显示桌面文件</translation>
     </message>
 </context>
 <context>
