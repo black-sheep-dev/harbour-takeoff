@@ -1,10 +1,12 @@
-* Mon Nov 02 2020 Black Sheep <blackhsheep@nubecula.org> 0.6.9-1
+* Mon Nov 02 2020 Black Sheep <blackhsheep@nubecula.org> 0.6.10-1
+- 0.6.10-1
+- Update of chinese translation (Thanks to dahsinfantry)
+
 - 0.6.9-1
 - Bugfix of crash when disable active app
 - Show desktop file content of application in manager
 - Code improvements
 
-* Fri Oct 30 2020 Black Sheep <blackhsheep@nubecula.org> 0.6.8-1
 - 0.6.8-1
 - Update Swedish translation
 
