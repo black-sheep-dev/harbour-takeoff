@@ -14,9 +14,10 @@
 #include <QStandardPaths>
 #include <QTextStream>
 
+static const QString HARBOUR_TAKEOFF_DEFAULT_APP_LIBRARY_API_URL = QStringLiteral("https://static-api.nubecula.org/harbour-takeoff-app-library.json");
+
 AppLibraryAPI::AppLibraryAPI(QObject *parent) :
-    QObject(parent),
-    m_manager(new QNetworkAccessManager(this))
+    QObject(parent)
 {
     connect(m_manager, &QNetworkAccessManager::finished, this, &AppLibraryAPI::onReply);
 
@@ -37,7 +38,7 @@ void AppLibraryAPI::resetSettings()
     setActive(false);
     setAutoUpdate(false);
     setAutoUse(false);
-    setUrl(QStringLiteral(HARBOUR_TAKEOFF_DEFAULT_APP_LIBRARY_API_URL));
+    setUrl(HARBOUR_TAKEOFF_DEFAULT_APP_LIBRARY_API_URL);
 
     writeSettings();
 }
@@ -238,7 +239,7 @@ void AppLibraryAPI::readSettings()
     m_active = settings.value(QStringLiteral("active"), false).toBool();
     m_autoUpdate = settings.value(QStringLiteral("auto_update"), false).toBool();
     m_autoUse = settings.value(QStringLiteral("auto_use"), false).toBool();
-    m_url = settings.value(QStringLiteral("url"), QStringLiteral(HARBOUR_TAKEOFF_DEFAULT_APP_LIBRARY_API_URL)).toString();
+    m_url = settings.value(QStringLiteral("url"), HARBOUR_TAKEOFF_DEFAULT_APP_LIBRARY_API_URL).toString();
     settings.endGroup();
 }
 

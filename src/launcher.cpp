@@ -12,7 +12,7 @@ Launcher::Launcher()
 
 void Launcher::takeoff(bool wait)
 {
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-takeoff/takeoff.def");
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QStringLiteral("/harbour-takeoff/takeoff.def"));
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;

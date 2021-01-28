@@ -145,7 +145,7 @@ bool AppListModel::setData(const QModelIndex &index, const QVariant &value, int 
     if (!index.isValid())
         return false;
 
-    App *app = m_apps.at(index.row());
+    auto app = m_apps.at(index.row());
 
     switch (role) {
 
@@ -162,7 +162,7 @@ bool AppListModel::setData(const QModelIndex &index, const QVariant &value, int 
         break;
 
     default:
-        break;
+        return false;
     }
 
     emit dataChanged(index, index);

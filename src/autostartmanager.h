@@ -68,10 +68,10 @@ private:
     void writeSettings();
 
     QStringList m_activeApps;
-    AppListModel *m_activeAppsModel{nullptr};
-    AppListModel *m_appsModel{nullptr};
+    AppListModel *m_activeAppsModel{new AppListModel(this)};
+    AppListModel *m_appsModel{new AppListModel(this)};
 
-    AppLibraryAPI *m_libraryAPI{nullptr};
+    AppLibraryAPI *m_libraryAPI{new AppLibraryAPI(this)};
 
     // properties
     int m_startDelay{0};

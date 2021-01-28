@@ -13,10 +13,7 @@
 #include "launcher.h"
 
 AutostartManager::AutostartManager(QObject *parent) :
-    QObject(parent),
-    m_activeAppsModel(new AppListModel(this)),
-    m_appsModel(new AppListModel(this)),
-    m_libraryAPI(new AppLibraryAPI(this))
+    QObject(parent)
 {
     connect(m_activeAppsModel, &AppListModel::changed, this, &AutostartManager::applyChanges);
     connect(m_libraryAPI, &AppLibraryAPI::libraryUpdated, this, &AutostartManager::onLibraryUpdate);

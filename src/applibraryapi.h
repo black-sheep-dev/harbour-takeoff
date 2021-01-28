@@ -1,8 +1,6 @@
 #ifndef APPLIBRARYAPI_H
 #define APPLIBRARYAPI_H
 
-#define     HARBOUR_TAKEOFF_DEFAULT_APP_LIBRARY_API_URL         "https://static-api.nubecula.org/harbour-takeoff-app-library.json"
-
 #include <QObject>
 
 #include <QJsonObject>
@@ -63,7 +61,7 @@ private:
 
     QJsonObject m_localLibrary;
     quint16 m_localLibraryVersion{0};
-    QNetworkAccessManager *m_manager{nullptr};
+    QNetworkAccessManager *m_manager{new QNetworkAccessManager(this)};
 
     // properties
     bool m_active{false};
