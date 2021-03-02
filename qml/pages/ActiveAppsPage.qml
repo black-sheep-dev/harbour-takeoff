@@ -52,23 +52,24 @@ Page {
             menu: ContextMenu {
                 MenuItem {
                     text: qsTr("Move up")
-                    onClicked: AutostartManager.activeApps().moveUp(index)
+                    onClicked: {
+                        AutostartManager.activeApps().moveUp(index)
+                        AutostartManager.applyChanges()
+                    }
                 }
                 MenuItem {
                     text: qsTr("Move down")
-                    onClicked: AutostartManager.activeApps().moveDown(index)
+                    onClicked: {
+                        AutostartManager.activeApps().moveDown(index)
+                        AutostartManager.applyChanges()
+                    }
                 }
                 MenuItem {
                     text: qsTr("Disable")
                     onClicked: remorse.execute(delegate, qsTr("Disabling autostart of app"), function() {
                         autostart = false
-                        AutostartManager.activeApps().removeApp(index)
                         AutostartManager.applyChanges()
                     })
-                }
-                MenuItem {
-                    text: qsTr("Edit");
-                    onClicked: pageStack.push(Qt.resolvedUrl("../dialogs/EditAppDialog.qml"), {app: AutostartManager.activeApps().app(index)})
                 }
             }
 
@@ -81,7 +82,7 @@ Page {
 
                 anchors.verticalCenter: parent.verticalCenter
 
-                source: "image://theme/" + icon
+                source: icon
             }
 
             Item {
@@ -107,7 +108,7 @@ Page {
                     font.pixelSize: Theme.fontSizeMedium
                 }
                 Label{
-                    text: package_name
+                    text: packageName
                     color: Theme.secondaryColor
                     font.pixelSize: Theme.fontSizeSmall
                 }

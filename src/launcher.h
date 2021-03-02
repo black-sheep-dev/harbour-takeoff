@@ -4,7 +4,7 @@
 class Launcher
 {
 public:
-    Launcher();
+    Launcher() = default;
 
     static void takeoff(bool wait = false);
 };

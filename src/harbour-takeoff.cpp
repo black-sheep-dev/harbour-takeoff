@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
         QCoreApplication::setOrganizationDomain(QStringLiteral("nubecula.org"));
 
         qmlRegisterType<App>("org.nubecula.harbour.takeoff", 1, 0, "App");
-        qmlRegisterType<AppLibraryAPI>("org.nubecula.harbour.takeoff", 1, 0, "AppLibraryApi");
         qmlRegisterType<AppListModel>("org.nubecula.harbour.takeoff", 1, 0, "AppListModel");
         qmlRegisterType<AppListSortFilterModel>("org.nubecula.harbour.takeoff", 1, 0, "AppListSortFilterModel");
 
@@ -41,7 +40,7 @@ int main(int argc, char *argv[])
             Q_UNUSED(engine)
             Q_UNUSED(scriptEngine)
 
-            auto *manager = new AutostartManager;
+            auto manager = new AutostartManager;
 
             return manager;
         });

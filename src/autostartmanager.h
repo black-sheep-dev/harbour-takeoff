@@ -1,4 +1,4 @@
-#ifndef AUTOSTARTMANAGER_H
+﻿#ifndef AUTOSTARTMANAGER_H
 #define AUTOSTARTMANAGER_H
 
 #include <QObject>
@@ -6,7 +6,6 @@
 #include <QStandardPaths>
 #include <QNetworkAccessManager>
 
-#include "applibraryapi.h"
 #include "applistmodel.h"
 #include "applistsortfiltermodel.h"
 
@@ -21,9 +20,8 @@ public:
     ~AutostartManager() override;
 
     Q_INVOKABLE AppListModel *activeApps();
-    Q_INVOKABLE QString activeAppsCount() const;
     Q_INVOKABLE AppListModel *apps();
-    Q_INVOKABLE AppLibraryAPI *libraryAPI();
+    Q_INVOKABLE QString desktopFileContent(const QString &fileName) const;
 
     bool apiActive() const;
     bool apiAutoUse() const;
@@ -33,13 +31,11 @@ public:
     int startDelay() const;
 
 public slots:
-    Q_INVOKABLE void execute(const QString &cmd);
     Q_INVOKABLE void refresh();
     Q_INVOKABLE void reset();
     Q_INVOKABLE void takeoff();
 
     Q_INVOKABLE void applyChanges();
-    Q_INVOKABLE void onAutostartChanged(bool enabled);
 
     // properties
     void setStartDelay(int secs);
@@ -49,29 +45,18 @@ signals:
     void startDelayChanged(int secs);
 
 private slots:
-    void onLibraryUpdate();
+    void onAutostartChanged();
 
 private:
     void cleanup();
     QString getStartCmd(const QString &cmd) const;
     void loadApps();
 
-    void writeStartScript();
-
-    void readCustomSettings();
-    void writeCustomSettings();
-
-    void readDefinitions();
-    void writeDefinitions();
-
     void readSettings();
     void writeSettings();
 
-    QStringList m_activeApps;
     AppListModel *m_activeAppsModel{new AppListModel(this)};
     AppListModel *m_appsModel{new AppListModel(this)};
-
-    AppLibraryAPI *m_libraryAPI{new AppLibraryAPI(this)};
 
     // properties
     int m_startDelay{0};

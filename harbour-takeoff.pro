@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # VERSION
-VERSION = 0.6.10
+VERSION = 0.7.2
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # The name of your application
@@ -22,21 +22,23 @@ CONFIG += sailfishapp
 systemd.files = $$PWD/systemd/org.nubecula.takeoff.service
 systemd.path = /usr/lib/systemd/user
 
-INSTALLS += systemd
+startup.files = $$PWD/systemd/harbour-takeoff-startup.sh
+startup.path = /usr/bin/
+
+INSTALLS += systemd startup
 
 SOURCES += src/harbour-takeoff.cpp \
     src/app.cpp \
-    src/applibraryapi.cpp \
     src/applistmodel.cpp \
     src/applistsortfiltermodel.cpp \
     src/autostartmanager.cpp \
-    src/launcher.cpp
+    src/launcher.cpp \
+    src/utils.cpp
 
 DISTFILES += qml/harbour-takeoff.qml \
     api/harbour-takeoff-app-library.json \
     icons/512x512/harbour-takeoff.png \
     icons/scaleable/harbour-takeoff.svg \
-    library/harbour-takeoff-app-library.json \
     qml/cover/CoverPage.qml \
     qml/dialogs/EditAppDialog.qml \
     qml/pages/AboutPage.qml \
@@ -48,6 +50,7 @@ DISTFILES += qml/harbour-takeoff.qml \
     rpm/harbour-takeoff.changes.run.in \
     rpm/harbour-takeoff.spec \
     rpm/harbour-takeoff.yaml \
+    systemd/harbour-takeoff-startup.sh \
     systemd/org.nubecula.takeoff.service \
     translations/*.ts \
     harbour-takeoff.desktop
@@ -69,11 +72,11 @@ TRANSLATIONS += \
 
 HEADERS += \
     src/app.h \
-    src/applibraryapi.h \
     src/applistmodel.h \
     src/applistsortfiltermodel.h \
     src/autostartmanager.h \
-    src/launcher.h
+    src/launcher.h \
+    src/utils.h
 
 RESOURCES += \
     ressources.qrc

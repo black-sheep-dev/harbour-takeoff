@@ -111,11 +111,11 @@ QVariant AppListModel::data(const QModelIndex &index, int role) const
     case AutostartRole:
         return app->autostart();
 
-    case DesktopFileData:
-        return app->desktopFileData();
-
     case IconRole:
         return app->icon();
+
+    case JailedRole:
+        return app->jailed();
 
     case NameRole:
         return app->name();
@@ -123,17 +123,8 @@ QVariant AppListModel::data(const QModelIndex &index, int role) const
     case PackageNameRole:
         return app->packageName();
 
-    case StartCmdRole:
-        return app->startCmd();
-
-    case StartCmdCustomRole:
-        return app->startCmdCustom();
-
-    case StartCmdLibraryRole:
-        return app->startCmdLibrary();
-
-    case UseLibraryCmdRole:
-        return app->useLibraryStartCmd();
+    case DesktopFileRole:
+        return app->desktopFile();
 
     default:
         return QVariant();
@@ -153,14 +144,6 @@ bool AppListModel::setData(const QModelIndex &index, const QVariant &value, int 
         app->setAutostart(value.toBool());
         break;
 
-    case StartCmdRole:
-        app->setStartCmd(value.toString());
-        break;
-
-    case StartCmdCustomRole:
-        app->setStartCmdCustom((value.toString()));
-        break;
-
     default:
         return false;
     }
@@ -175,14 +158,11 @@ QHash<int, QByteArray> AppListModel::roleNames() const
     QHash<int, QByteArray> roles;
 
     roles[AutostartRole]        = "autostart";
-    roles[DesktopFileData]      = "desktop_file_data";
+    roles[DesktopFileRole]      = "desktopFile";
     roles[IconRole]             = "icon";
+    roles[JailedRole]           = "jailed";
     roles[NameRole]             = "name";
-    roles[PackageNameRole]      = "package_name";
-    roles[StartCmdRole]         = "start_cmd";
-    roles[StartCmdCustomRole]   = "start_cmd_custom";
-    roles[StartCmdLibraryRole]  = "start_cmd_library";
-    roles[UseLibraryCmdRole]    = "use_library_cmd";
+    roles[PackageNameRole]      = "packageName";
 
     return roles;
 }

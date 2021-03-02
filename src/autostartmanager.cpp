@@ -8,25 +8,20 @@
 #include <QJsonParseError>
 #include <QProcess>
 #include <QSettings>
-#include <QTextStream>
 
 #include "launcher.h"
+#include "utils.h"
 
 AutostartManager::AutostartManager(QObject *parent) :
     QObject(parent)
 {
-    connect(m_activeAppsModel, &AppListModel::changed, this, &AutostartManager::applyChanges);
-    connect(m_libraryAPI, &AppLibraryAPI::libraryUpdated, this, &AutostartManager::onLibraryUpdate);
-
     readSettings();
-    writeStartScript();
 }
 
 AutostartManager::~AutostartManager()
 {
     writeSettings();
-    writeCustomSettings();
-    writeDefinitions();
+    applyChanges();
 }
 
 AppListModel *AutostartManager::activeApps()
@@ -34,19 +29,14 @@ AppListModel *AutostartManager::activeApps()
     return m_activeAppsModel;
 }
 
-QString AutostartManager::activeAppsCount() const
-{
-    return QString::number(m_activeAppsModel->apps().count());
-}
-
 AppListModel *AutostartManager::apps()
 {
     return m_appsModel;
 }
 
-AppLibraryAPI *AutostartManager::libraryAPI()
+QString AutostartManager::desktopFileContent(const QString &fileName) const
 {
-    return m_libraryAPI;
+    return Utils::readDesktopFileContent(fileName);
 }
 
 int AutostartManager::startDelay() const
@@ -54,25 +44,14 @@ int AutostartManager::startDelay() const
     return m_startDelay;
 }
 
-void AutostartManager::execute(const QString &cmd)
-{
-    QProcess::startDetached(cmd);
-}
-
 void AutostartManager::refresh()
 {
     cleanup();
-    readDefinitions();
     loadApps();
-    readCustomSettings();
-    onLibraryUpdate();
 }
 
 void AutostartManager::reset()
 {
-    m_activeAppsModel->reset();
-    writeDefinitions();
-
     refresh();
 }
 
@@ -83,27 +62,7 @@ void AutostartManager::takeoff()
 
 void AutostartManager::applyChanges()
 {
-    writeCustomSettings();
-    writeDefinitions();
-    writeStartScript();
-}
-
-void AutostartManager::onAutostartChanged(bool enabled)
-{
-    App *app = qobject_cast<App *>(sender());
-
-    if (!app)
-        return;
-
-    if (enabled) {
-        m_activeApps.append(app->packageName());
-        m_activeAppsModel->addApp(app);
-    } else {
-        m_activeApps.removeAll(app->packageName());
-        m_activeAppsModel->removeApp(app);
-    }
-
-    writeDefinitions();
+    Utils::writeDefinition(m_appsModel->apps());
 }
 
 void AutostartManager::setStartDelay(int secs)
@@ -117,15 +76,24 @@ void AutostartManager::setStartDelay(int secs)
     writeSettings();
 }
 
-void AutostartManager::onLibraryUpdate()
+void AutostartManager::onAutostartChanged()
 {
-    m_libraryAPI->updateApps(m_appsModel->apps());
+    auto app = qobject_cast<App *>(sender());
+
+    if (app == nullptr)
+        return;
+
+    if (app->autostart()) {
+        m_activeAppsModel->addApp(app);
+    } else {
+        m_activeAppsModel->removeApp(app);
+    }
+
+    applyChanges();
 }
 
 void AutostartManager::cleanup()
 {
-    m_activeAppsModel->reset();
-
     const QList<App *> apps = m_appsModel->apps();
 
     m_appsModel->reset();
@@ -174,12 +142,10 @@ void AutostartManager::loadApps()
                     QDir::Files,
                     QDirIterator::NoIteratorFlags);
 
+    QList<App *> apps;
+
     while (it.hasNext()) {
         const QFileInfo info = QFileInfo(it.next());
-
-        // remove  apps
-        if (info.baseName().startsWith("apkd_"))
-            continue;
 
         // read *.desktop file
         QSettings ini(info.filePath(), QSettings::IniFormat);
@@ -197,33 +163,44 @@ void AutostartManager::loadApps()
         // create app
         App *app = new App(this);
 
-        app->setIcon(ini.value(QStringLiteral("Icon")).toString());
-        app->setPackageName(info.baseName());
-        app->setName(ini.value(QStringLiteral("Name")).toString());
+        app->setJailed(cmd.contains(QLatin1String("sailjail")));
 
-        app->setStartCmd(cmd);
+        app->setDesktopFile(info.fileName());
+
+        // set package name
+        if (info.baseName().startsWith(QLatin1String("apkd_"))) {
+            app->setPackageName(ini.value(QStringLiteral("X-apkd-packageName")).toString());
+        } else {
+            app->setPackageName(info.baseName());
+        }
+
+        // set icon
+        QString icon = ini.value(QStringLiteral("Icon")).toString();
+
+        if (!icon.startsWith(QLatin1Char('/')))
+                icon.prepend(QStringLiteral("image://theme/"));
+
+        app->setIcon(icon);
+
+        // set name
+        app->setName(ini.value(QStringLiteral("Name")).toString());
 
         ini.endGroup();
 
-        // read desktop file data
-        QFile file(info.filePath());
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-            continue;
-
-        app->setDesktopFileData(QString(file.readAll()));
-
-        file.close();
-
-        m_appsModel->addApp(app);
+        apps.append(app);
     }
 
-    // check if app is active
-    QList<App *> active;
-    active.reserve(m_activeApps.count());
+    m_appsModel->setApps(apps);
 
-    const QList<App *> apps = m_appsModel->apps();
-    for (App *app: apps) {
-        const int idx = m_activeApps.indexOf(app->packageName());
+
+    // check if app is active
+    const QStringList activeApps = Utils::readDefinition();
+
+    QList<App *> active;
+    active.reserve(activeApps.count());
+
+    for (auto app: apps) {
+        const int idx = activeApps.indexOf(app->desktopFile());
 
         if (idx < 0)
             continue;
@@ -235,133 +212,9 @@ void AutostartManager::loadApps()
     m_activeAppsModel->setApps(active);
 
     // create connections
-    for (App *app: apps) {
+    for (auto app: apps) {
         connect(app, &App::autostartChanged, this, &AutostartManager::onAutostartChanged);
     }
-}
-
-void AutostartManager::writeStartScript()
-{
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/takeoff.sh"));
-
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-        return;
-
-    QTextStream out(&file);
-    out << QStringLiteral("#!/bin/bash\n");
-    out << QString("sleep %1\n").arg(QString::number(m_startDelay));
-    out << QStringLiteral("/usr/bin/invoker -n -s --type=silica-qt5 /usr/bin/harbour-takeoff --takeoff");
-
-    file.close();
-}
-
-void AutostartManager::readCustomSettings()
-{
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/custom.def"));
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return;
-
-    QJsonParseError error{};
-
-    const QJsonObject customs = QJsonDocument::fromJson(file.readAll(), &error).object();
-
-    file.close();
-
-    if (error.error) {
-#ifdef QT_DEBUG
-        qDebug() << QStringLiteral("ERROR PARSING JSON");
-#endif
-        return;
-    }
-
-    const QList<App *> apps = m_appsModel->apps();
-    for (App *app : apps) {
-        app->setUseLibraryStartCmd(customs.value(app->packageName()).toObject().value(QStringLiteral("use_library_cmd")).toBool(false));
-        app->setStartCmdCustom(customs.value(app->packageName()).toObject().value(QStringLiteral("custom_start_cmd")).toString());
-    }
-}
-
-void AutostartManager::writeCustomSettings()
-{
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/custom.def"));
-
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-        return;
-
-    QJsonObject customs;
-
-    const QList<App *> apps = m_appsModel->apps();
-    for (App *app : apps) {
-        QJsonObject item;
-        item.insert(QStringLiteral("use_library_cmd"), app->useLibraryStartCmd());
-        if (!app->startCmdCustom().isEmpty())
-            item.insert(QStringLiteral("custom_start_cmd"), app->startCmdCustom());
-
-        customs.insert(app->packageName(), item);
-    }
-
-    QTextStream out(&file);
-
-#ifdef QT_DEBUG
-    out << QJsonDocument(customs).toJson();
-#else
-    out << QJsonDocument(customs).toJson(QJsonDocument::Compact);
-#endif
-
-
-    file.close();
-}
-
-void AutostartManager::readDefinitions()
-{
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/takeoff.def"));
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return;
-
-    m_activeApps.clear();
-
-    QTextStream in(&file);
-
-    while (!in.atEnd()) {
-        const QString line = in.readLine().simplified();
-
-        if (line.startsWith("###")) {
-            m_activeApps.append(line.mid(3, line.length() - 3));
-        }
-    }
-
-    file.close();
-}
-
-void AutostartManager::writeDefinitions()
-{
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + APP_TARGET + QStringLiteral("/takeoff.def"));
-
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-        return;
-
-    QTextStream out(&file);
-
-    const QList<App *> apps = m_activeAppsModel->apps();
-    for (const App *app: apps) {
-        out << "###" << app->packageName() << "\n";
-
-        if ( (app->useLibraryStartCmd() || m_libraryAPI->autoUse())
-             && !app->startCmdLibrary().isEmpty() ) {
-            out << app->startCmdLibrary();
-        } else {
-            if (!app->startCmdCustom().isEmpty())
-                out << app->startCmdCustom();
-            else
-                out << app->startCmd();
-        }
-
-        out << "\n";
-    }
-
-    file.close();
 }
 
 void AutostartManager::readSettings()

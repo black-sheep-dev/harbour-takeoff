@@ -12,14 +12,11 @@ class AppListModel : public QAbstractListModel
 public:
     enum AppRoles {
         AutostartRole      = Qt::UserRole + 1,
-        DesktopFileData,
+        DesktopFileRole,
         IconRole,
+        JailedRole,
         NameRole,
-        PackageNameRole,
-        StartCmdRole,
-        StartCmdCustomRole,
-        StartCmdLibraryRole,
-        UseLibraryCmdRole
+        PackageNameRole
     };
     Q_ENUM(AppRoles)
 

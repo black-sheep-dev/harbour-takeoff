@@ -1,13 +1,7 @@
 #include "app.h"
 
 App::App(QObject *parent) :
-    QObject(parent),
-    m_icon(QString()),
-    m_name(QString()),
-    m_packageName(QString()),
-    m_startCmd(QString()),
-    m_startCmdCustom(QString()),
-    m_startCmdLibrary(QString())
+    QObject(parent)
 {
 
 }
@@ -17,14 +11,19 @@ bool App::autostart() const
     return m_autostart;
 }
 
-QString App::desktopFileData() const
+QString App::desktopFile() const
 {
-    return m_desktopFileData;
+    return m_desktopFile;
 }
 
 QString App::icon() const
 {
     return m_icon;
+}
+
+bool App::jailed() const
+{
+    return m_jailed;
 }
 
 QString App::name() const
@@ -37,26 +36,6 @@ QString App::packageName() const
     return m_packageName;
 }
 
-QString App::startCmd() const
-{
-    return m_startCmd;
-}
-
-QString App::startCmdCustom() const
-{
-    return m_startCmdCustom;
-}
-
-QString App::startCmdLibrary() const
-{
-    return m_startCmdLibrary;
-}
-
-bool App::useLibraryStartCmd() const
-{
-    return m_useLibraryStartCmd;
-}
-
 void App::setAutostart(bool enabled)
 {
     if (m_autostart == enabled)
@@ -66,13 +45,13 @@ void App::setAutostart(bool enabled)
     emit autostartChanged(m_autostart);
 }
 
-void App::setDesktopFileData(const QString &data)
+void App::setDesktopFile(const QString &file)
 {
-    if (m_desktopFileData == data)
+    if (m_desktopFile == file)
         return;
 
-    m_desktopFileData = data;
-    emit desktopFileDataChanged(m_desktopFileData);
+    m_desktopFile = file;
+    emit desktopFileChanged(m_desktopFile);
 }
 
 void App::setIcon(const QString &icon)
@@ -82,6 +61,15 @@ void App::setIcon(const QString &icon)
 
     m_icon = icon;
     emit iconChanged(m_icon);
+}
+
+void App::setJailed(bool jailed)
+{
+    if (m_jailed == jailed)
+        return;
+
+    m_jailed = jailed;
+    emit jailedChanged(m_jailed);
 }
 
 void App::setName(const QString &name)
@@ -101,40 +89,3 @@ void App::setPackageName(const QString &name)
     m_packageName = name;
     emit packageNameChanged(m_packageName);
 }
-
-void App::setStartCmd(const QString &cmd)
-{
-    if (m_startCmd == cmd)
-        return;
-
-    m_startCmd = cmd;
-    emit startCmdChanged(m_startCmd);
-}
-
-void App::setStartCmdCustom(const QString &cmd)
-{
-    if (m_startCmdCustom == cmd)
-        return;
-
-    m_startCmdCustom = cmd;
-    emit startCmdCustomChanged(m_startCmdCustom);
-}
-
-void App::setStartCmdLibrary(const QString &cmd)
-{
-    if (m_startCmdLibrary == cmd)
-        return;
-
-    m_startCmdLibrary = cmd;
-    emit startCmdLibraryChanged(m_startCmdLibrary);
-}
-
-void App::setUseLibraryStartCmd(bool enable)
-{
-    if (m_useLibraryStartCmd == enable)
-        return;
-
-    m_useLibraryStartCmd = enable;
-    emit useLibraryStartCmdChanged(m_useLibraryStartCmd);
-}
-

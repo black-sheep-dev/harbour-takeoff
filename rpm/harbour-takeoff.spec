@@ -9,7 +9,7 @@ Name:       harbour-takeoff
 # << macros
 
 Summary:    Takeoff
-Version:    0.6.10
+Version:    0.7.2
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -98,6 +98,7 @@ fi
 %files
 %defattr(-,root,root,-)
 %{_bindir}
+%{_bindir}/harbour-takeoff-startup.sh
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
