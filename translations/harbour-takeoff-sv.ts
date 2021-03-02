@@ -23,6 +23,14 @@
         <source>If you like my work why not buy me a beer?</source>
         <translation>Om du gillar mitt arbete, kanske du bjuder på en öl?</translation>
     </message>
+    <message>
+        <source>Donate with PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate with Liberpay</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
@@ -49,10 +57,6 @@
     <message>
         <source>Move down</source>
         <translation>Flytta ner</translation>
-    </message>
-    <message>
-        <source>Edit</source>
-        <translation>Redigera</translation>
     </message>
     <message>
         <source>No active apps</source>
@@ -130,50 +134,6 @@
     <message>
         <source>Settings</source>
         <translation>Inställningar</translation>
-    </message>
-    <message>
-        <source>Reset to default values</source>
-        <translation>Återställ standardvärden</translation>
-    </message>
-    <message>
-        <source>Library url</source>
-        <translation>Biblioteks-URL</translation>
-    </message>
-    <message>
-        <source>Enter library url</source>
-        <translation>Ange URL till biblioteket</translation>
-    </message>
-    <message>
-        <source>Automatic library updates</source>
-        <translation>Automatiska biblioteksuppdateringar</translation>
-    </message>
-    <message>
-        <source>Use library commands by default</source>
-        <translation>Använd bibliotekskommandon som standard</translation>
-    </message>
-    <message>
-        <source>Activating this option will overwrite your custom command settings! If disabled you can activate library command for every app individually.</source>
-        <translation>Aktivering av det här alternativet kommer att skriva över dina anpassade kommandoinställningar. Vid avaktivering kan du aktivera bibliotekskommando för varje app individuellt.</translation>
-    </message>
-    <message>
-        <source>Library API</source>
-        <translation>Biblioteks-API</translation>
-    </message>
-    <message>
-        <source>Update library</source>
-        <translation>Uppdatera bibliotek</translation>
-    </message>
-    <message>
-        <source>Use library API</source>
-        <translation>Använd bibliotekets API</translation>
-    </message>
-    <message>
-        <source>Activating this option will update the library automatically on app start.</source>
-        <translation>Aktivering av det här alternativet kommer att uppdatera biblioteket automatiskt vid appstart.</translation>
-    </message>
-    <message>
-        <source>Use the library from remote host to get good start commands for your apps. Be aware that this could be a potential security risk because the commands will be exectuted on your device!</source>
-        <translation>Använd bibliotek från en fjärrdator för att få bra startkommandon till dina appar. Var medveten om att detta kan vara en potentiell säkerhetsrisk eftersom kommandona kommer att köras på din enhet!</translation>
     </message>
     <message>
         <source>Startup Delay</source>

@@ -1,5 +1,8 @@
+* Tue Mar 02 2021 Black Sheep <blackhsheep@nubecula.org> 0.7.2-1
+- Complete rework of code and functionallity
+- Changes for Sailfish OS 4.0.1.45 (Koli)
+
 * Mon Nov 02 2020 Black Sheep <blackhsheep@nubecula.org> 0.6.10-1
-- 0.6.10-1
 - Update of chinese translation (Thanks to dahsinfantry)
 
 - 0.6.9-1

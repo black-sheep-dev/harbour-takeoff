@@ -4,8 +4,6 @@
         <file alias="logo">icons/logo.svg</file>
         <file alias="git">icons/github.svg</file>
         <file alias="paypal">icons/paypal.svg</file>
-    </qresource>
-    <qresource prefix="/files">
-        <file>library/harbour-takeoff-app-library.json</file>
+        <file alias="liberpay">icons/liberpay.svg</file>
     </qresource>
 </RCC>

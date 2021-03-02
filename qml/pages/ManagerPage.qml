@@ -72,7 +72,7 @@ Page {
                         text: qsTr("Show desktop file");
                         onClicked: pageStack.push(Qt.resolvedUrl("DesktopFileViewerPage.qml"), {
                                                       title: model.name,
-                                                      content: model.desktop_file_data
+                                                      content: AutostartManager.desktopFileContent(model.desktopFile)
                                                   })
                     }
                 }
@@ -90,8 +90,16 @@ Page {
                         width: parent.height - 2 * Theme.paddingSmall
                         anchors.verticalCenter: parent.verticalCenter
 
-                        source: "image://theme/" + icon
+                        source: icon
 
+                        Image {
+                            visible: jailed
+
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+
+                            source: "image://theme/icon-s-secure"
+                        }
                     }
 
                     Item {
@@ -118,7 +126,7 @@ Page {
                             font.pixelSize: Theme.fontSizeMedium
                         }
                         Label{
-                            text: package_name
+                            text: packageName
                             color: Theme.secondaryColor
                             font.pixelSize: Theme.fontSizeSmall
 
@@ -126,6 +134,8 @@ Page {
                     }
 
                     Switch {
+                        visible: !jailed
+
                         id: activateSwitch
 
                         Component.onCompleted: checked = autostart
@@ -136,9 +146,12 @@ Page {
                     }
                 }
 
-                onClicked: activateSwitch.checked = !activateSwitch.checked
+                onClicked: if (!jailed) activateSwitch.checked = !activateSwitch.checked
+
             }
             VerticalScrollDecorator {}
         }
     }
+
+    onStatusChanged: if (status === PageStatus.Deactivating) AutostartManager.applyChanges()
 }

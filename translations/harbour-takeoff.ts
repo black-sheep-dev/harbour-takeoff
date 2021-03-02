@@ -23,6 +23,14 @@
         <source>If you like my work why not buy me a beer?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Donate with PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate with Liberpay</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
@@ -48,10 +56,6 @@
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -129,50 +133,6 @@
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset to default values</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Library url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter library url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Automatic library updates</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use library commands by default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Activating this option will overwrite your custom command settings! If disabled you can activate library command for every app individually.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Library API</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update library</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use library API</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Activating this option will update the library automatically on app start.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use the library from remote host to get good start commands for your apps. Be aware that this could be a potential security risk because the commands will be exectuted on your device!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
