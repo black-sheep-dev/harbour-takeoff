@@ -31,7 +31,8 @@ I didn't figured it out yet, how to solve this. Maybe someone else has an idea?
 - Englisch
 - German
 - Chinese (by dashinfantry)
-- Swedish (by eson57) 
+- Swedish (by eson57)
+ 
 
 ### Donation
 
