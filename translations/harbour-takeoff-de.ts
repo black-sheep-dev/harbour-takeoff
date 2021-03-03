@@ -25,11 +25,11 @@
     </message>
     <message>
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>Spenden via PayPal</translation>
     </message>
     <message>
         <source>Donate with Liberpay</source>
-        <translation type="unfinished"></translation>
+        <translation>Spenden via Liberpay</translation>
     </message>
 </context>
 <context>
