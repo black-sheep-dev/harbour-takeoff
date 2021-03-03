@@ -13,6 +13,7 @@ Page {
         Column {
             id: column
             width:parent.width
+            spacing: Theme.paddingMedium
 
             PageHeader {
                 title: qsTr("About")
@@ -26,11 +27,6 @@ Page {
                 width: parent.width / 2
                 anchors.horizontalCenter: parent.horizontalCenter
                 opacity: 0.7
-            }
-
-            Item {
-                height: Theme.paddingLarge
-                width: 1
             }
 
             Label {
@@ -50,7 +46,7 @@ Page {
             }
 
             Item {
-                height: Theme.paddingLarge
+                height: Theme.paddingMedium
                 width: 1
             }
 
@@ -61,6 +57,50 @@ Page {
                 font.pixelSize: Theme.fontSizeSmall
 
                 text: qsTr("Takeoff is an autostart manager for launching apps after device boot.")
+            }
+
+            SectionHeader{
+                text: qsTr("Translations")
+            }
+
+            Label {
+                x : Theme.horizontalPageMargin
+                width: parent.width - 2*x
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeSmall
+
+                text: qsTr("Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.")
+            }
+
+            BackgroundItem{
+                width: parent.width
+                height: Theme.itemSizeMedium
+                Row{
+                    x : Theme.horizontalPageMargin
+                    width: parent.width - 2*x
+                    height: parent.height
+                    spacing:Theme.paddingMedium
+
+                    Image {
+                        width: parent.height
+                        height: width
+                        fillMode: Image.PreserveAspectFit
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: "qrc:///icons/weblate"
+                    }
+
+                    Label{
+                        width: parent.width - parent.height - parent.spacing
+                        anchors.verticalCenter: parent.verticalCenter
+                        wrapMode: Text.WrapAnywhere
+                        font.pixelSize: Theme.fontSizeSmall
+
+                        text: "https://weblate.nubecula.org/projects/" + Qt.application.name
+                        color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
+
+                    }
+                }
+                onClicked: Qt.openUrlExternally("https://weblate.nubecula.org/projects/" + Qt.application.name)
             }
 
             SectionHeader{
@@ -168,6 +208,11 @@ Page {
                     }
                 }
                 onClicked: Qt.openUrlExternally("https://liberapay.com/black-sheep-dev/donate")
+            }
+
+            Item {
+                width: 1
+                height: Theme.paddingSmall
             }
         }
     }

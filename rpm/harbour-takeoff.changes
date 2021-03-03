@@ -1,3 +1,6 @@
+* Tue Mar 03 2021 Black Sheep <blackhsheep@nubecula.org> 0.7.3-1
+- Add translation information with self hosted Weblate server
+
 * Tue Mar 02 2021 Black Sheep <blackhsheep@nubecula.org> 0.7.2-1
 - Complete rework of code and functionallity
 - Changes for Sailfish OS 4.0.1.45 (Koli)

@@ -2,6 +2,8 @@
 
 Takeoff is an autostart manager for Sailfish OS to start apps automatically after system boot.
 
+>![](icons/128x128/harbour-takeoff.png)
+
 ### Upgrading from Version < 0.7.0
 Starting with version 0.7.0 the complete code base is rewritten and functionality changed.
 All setting from previous versions will be deleted.  
@@ -33,6 +35,9 @@ I didn't figured it out yet, how to solve this. Maybe someone else has an idea?
 - Chinese (by dashinfantry)
 - Swedish (by eson57)
  
+Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server:
+
+[https://weblate.nubecula.org/projects/harbour-takeoff/](https://weblate.nubecula.org/projects/harbour-takeoff/)
 
 ### Donation
 
