@@ -37,7 +37,7 @@ I didn't figured it out yet, how to solve this. Maybe someone else has an idea?
  
 Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server:
 
-[https://weblate.nubecula.org/projects/harbour-takeoff/](https://weblate.nubecula.org/projects/harbour-takeoff/)
+[![https://weblate.nubecula.org/engage/harbour-takeoff/](https://weblate.nubecula.org/widgets/harbour-takeoff/-/multi-auto.svg)](https://weblate.nubecula.org/engage/harbour-takeoff/)
 
 ### Donation
 
