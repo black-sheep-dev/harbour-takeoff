@@ -5,15 +5,15 @@
     <name>AboutPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O Takeoff</translation>
     </message>
     <message>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Źródła</translation>
     </message>
     <message>
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>Dotacje</translation>
     </message>
     <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
@@ -21,30 +21,30 @@
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeśli podoba Ci się moja praca, dlaczego nie postawisz mi piwa?</translation>
     </message>
     <message>
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>Wspomóż za pomocą PayPal</translation>
     </message>
     <message>
         <source>Donate with Liberpay</source>
-        <translation type="unfinished"></translation>
+        <translation>Wspomóż za pomocą Librepay</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenia</translation>
     </message>
     <message>
         <source>Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Twój język nie jest dostępny? Możesz wesprzeć ten projekt, tłumacząc go na moim własnym serwerze Weblate.</translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O Takeoff</translation>
     </message>
     <message>
         <source>Manage</source>
@@ -122,7 +122,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Odśwież</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -141,7 +141,7 @@
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <source>Startup Delay</source>
