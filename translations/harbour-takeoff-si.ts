@@ -5,15 +5,15 @@
     <name>AboutPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>පිළිබඳව</translation>
     </message>
     <message>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>මූලාශ්‍ර</translation>
     </message>
     <message>
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>පරිත්‍යාග</translation>
     </message>
     <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
@@ -25,15 +25,15 @@
     </message>
     <message>
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>පේපෑල් සමඟ පරිත්‍යාග කරන්න</translation>
     </message>
     <message>
         <source>Donate with Liberpay</source>
-        <translation type="unfinished"></translation>
+        <translation>ලිබර්පේ සමඟ පරිත්‍යාග කරන්න</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>පරිවර්තන</translation>
     </message>
     <message>
         <source>Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.</source>
@@ -44,11 +44,11 @@
     <name>ActiveAppsPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>පිළිබඳව</translation>
     </message>
     <message>
         <source>Manage</source>
-        <translation type="unfinished"></translation>
+        <translation>කළමනාකරණය</translation>
     </message>
     <message>
         <source>Takeoff</source>
@@ -56,7 +56,7 @@
     </message>
     <message>
         <source>Active Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>සක්‍රිය යෙදුම්</translation>
     </message>
     <message>
         <source>Move up</source>
@@ -122,7 +122,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>නැවුම් කරන්න</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -130,7 +130,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>සැකසුම්</translation>
     </message>
     <message>
         <source>Show desktop file</source>
@@ -141,7 +141,7 @@
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>සැකසුම්</translation>
     </message>
     <message>
         <source>Startup Delay</source>
