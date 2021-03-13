@@ -5,15 +5,15 @@
     <name>AboutPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O aplikácii</translation>
     </message>
     <message>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdroje</translation>
     </message>
     <message>
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>Darovania</translation>
     </message>
     <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
@@ -44,7 +44,7 @@
     <name>ActiveAppsPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O aplikácii</translation>
     </message>
     <message>
         <source>Manage</source>
@@ -122,7 +122,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnoviť</translation>
     </message>
     <message>
         <source>Reset</source>
