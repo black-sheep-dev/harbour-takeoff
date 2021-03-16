@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
-        <translation type="unfinished"></translation>
+        <translation>Takeoff to menedżer autostartu do uruchamiania aplikacji po uruchomieniu urządzenia.</translation>
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
@@ -48,77 +48,77 @@
     </message>
     <message>
         <source>Manage</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarządzanie</translation>
     </message>
     <message>
         <source>Takeoff</source>
-        <translation type="unfinished"></translation>
+        <translation>Takeoff</translation>
     </message>
     <message>
         <source>Active Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktywne aplikacje</translation>
     </message>
     <message>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Przesuń w górę</translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Przesuń w dół</translation>
     </message>
     <message>
         <source>No active apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak aktywnych aplikacji</translation>
     </message>
     <message>
         <source>Pull down to add apps in manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Przesuń w dół, aby dodać aplikacje w managerze</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącz</translation>
     </message>
     <message>
         <source>Disabling autostart of app</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącznie autostartu aplikacji</translation>
     </message>
 </context>
 <context>
     <name>EditAppDialog</name>
     <message>
         <source>Enter start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź polecenie startu</translation>
     </message>
     <message>
         <source>Start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Polecenie startu</translation>
     </message>
     <message>
         <source>Edit start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj polecenie startu</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Wykonaj</translation>
     </message>
     <message>
         <source>Use start command from library</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj polecenia startu z biblioteki</translation>
     </message>
     <message>
         <source>If you have problems with an app not starting, you can use a start command from the app library.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeśli masz problemy z uruchamianiem aplikacji, możesz użyć polecenia startu z biblioteki aplikacji.</translation>
     </message>
 </context>
 <context>
     <name>ManagerPage</name>
     <message>
         <source>Manage Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarządzaj aplikacjami</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -126,7 +126,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -134,7 +134,7 @@
     </message>
     <message>
         <source>Show desktop file</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż pliki desktop</translation>
     </message>
 </context>
 <context>
@@ -145,11 +145,11 @@
     </message>
     <message>
         <source>Startup Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie startu</translation>
     </message>
     <message>
         <source>Delay in seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie w sekundach</translation>
     </message>
 </context>
 </TS>
