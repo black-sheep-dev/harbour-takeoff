@@ -22,6 +22,11 @@ CONFIG += sailfishapp
 systemd.files = $$PWD/systemd/org.nubecula.takeoff.service
 systemd.path = /usr/lib/systemd/user
 
+contains(QMAKE_HOST.arch, aarch64):{
+    systemd.path = /usr/lib64/systemd/user
+}
+
+
 startup.files = $$PWD/systemd/harbour-takeoff-startup.sh
 startup.path = /usr/bin/
 
