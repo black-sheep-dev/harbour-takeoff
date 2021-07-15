@@ -9,7 +9,7 @@ Name:       harbour-takeoff
 # << macros
 
 Summary:    Takeoff
-Version:    0.7.3
+Version:    0.7.4
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -21,6 +21,7 @@ BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  desktop-file-utils
 
 %description
@@ -52,17 +53,6 @@ rm -rf %{buildroot}
 
 # >> install post
 %post
-if [[ ! -d "/home/nemo/.config/harbour-takeoff" ]]
-then
-mkdir /home/nemo/.config/harbour-takeoff
-touch /home/nemo/.config/harbour-takeoff/takeoff.def
-fi
-
-echo "#!/bin/bash" > /home/nemo/.config/harbour-takeoff/takeoff.sh
-echo "/usr/bin/invoker -n -s --type=silica-qt5 /usr/bin/harbour-takeoff --takeoff" >> /home/nemo/.config/harbour-takeoff/takeoff.sh
-chmod a+x /home/nemo/.config/harbour-takeoff/takeoff.sh
-chown -R nemo:nemo /home/nemo/.config/harbour-takeoff
-
 if [ $1 -eq 1 ]; then
 # Package install,
 systemctl-user enable org.nubecula.takeoff.service >/dev/null 2>&1 || :

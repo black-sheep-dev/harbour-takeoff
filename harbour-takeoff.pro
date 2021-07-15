@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # VERSION
-VERSION = 0.7.3
+VERSION = 0.7.4
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # The name of your application
@@ -18,6 +18,8 @@ TARGET = harbour-takeoff
 DEFINES += APP_TARGET=\\\"$$TARGET\\\"
 
 CONFIG += sailfishapp
+
+QT += dbus
 
 systemd.files = $$PWD/systemd/org.nubecula.takeoff.service
 systemd.path = /usr/lib/systemd/user

@@ -66,7 +66,7 @@ Page {
                 }
                 MenuItem {
                     text: qsTr("Disable")
-                    onClicked: remorse.execute(delegate, qsTr("Disabling autostart of app"), function() {
+                    onClicked: delegate.remorseAction(qsTr("Disabling autostart of app"), function() {
                         autostart = false
                         AutostartManager.applyChanges()
                     })
