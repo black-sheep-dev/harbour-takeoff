@@ -5,151 +5,151 @@
     <name>AboutPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Sources</translation>
     </message>
     <message>
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>Dons</translation>
     </message>
     <message>
         <source>Takeoff is an autostart manager for launching apps after device boot.</source>
-        <translation type="unfinished"></translation>
+        <translation>Takeoff est un gestionnaire de démarrage automatique permettant de lancer des applications au lancement du téléphone.</translation>
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished"></translation>
+        <translation>Si vous appréciez mon travail pourquoi ne pas m&apos;offrir une bière&#xa0;?</translation>
     </message>
     <message>
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>Donner par PayPal</translation>
     </message>
     <message>
         <source>Donate with Liberpay</source>
-        <translation type="unfinished"></translation>
+        <translation>Donner par Liberpay</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Traductions</translation>
     </message>
     <message>
         <source>Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Votre langue n&apos;est pas disponible ? Votre aide est la bienvenue pour traduire ce projet sur mon serveur Weblate dédié.</translation>
     </message>
 </context>
 <context>
     <name>ActiveAppsPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <source>Manage</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestionnaire</translation>
     </message>
     <message>
         <source>Takeoff</source>
-        <translation type="unfinished"></translation>
+        <translation>Takeoff</translation>
     </message>
     <message>
         <source>Active Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Apps supervisées</translation>
     </message>
     <message>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Monter</translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Descendre</translation>
     </message>
     <message>
         <source>No active apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune app supervisée</translation>
     </message>
     <message>
         <source>Pull down to add apps in manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Déroulez pour ajouter des apps dans le gestionnaire</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Désactiver</translation>
     </message>
     <message>
         <source>Disabling autostart of app</source>
-        <translation type="unfinished"></translation>
+        <translation>Désactiver le démarrage automatique de l&apos;app</translation>
     </message>
 </context>
 <context>
     <name>EditAppDialog</name>
     <message>
         <source>Enter start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrez la commande de démarrage</translation>
     </message>
     <message>
         <source>Start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Commande de démarrage</translation>
     </message>
     <message>
         <source>Edit start command</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier la commande de démarrage</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécuter</translation>
     </message>
     <message>
         <source>Use start command from library</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser la commande de démarrage de la bibliothèque</translation>
     </message>
     <message>
         <source>If you have problems with an app not starting, you can use a start command from the app library.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si vous rencontrez des problèmes avec une app qui ne démarre pas, vous pouvez utiliser une commande de démarrage de la bibliothèque d&apos;applications.</translation>
     </message>
 </context>
 <context>
     <name>ManagerPage</name>
     <message>
         <source>Manage Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Apps supervisées</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Rafraîchir</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <source>Show desktop file</source>
-        <translation type="unfinished"></translation>
+        <translation>Voir le fichier Desktop</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <source>Startup Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Délai de démarrage</translation>
     </message>
     <message>
         <source>Delay in seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Retard en secondes</translation>
     </message>
 </context>
 </TS>
