@@ -34,6 +34,8 @@ I didn't figured it out yet, how to solve this. Maybe someone else has an idea?
 - German
 - Chinese (by dashinfantry)
 - Swedish (by eson57)
+- French (by baxyz)
+- Polish (by atlochowski)
  
 Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server:
 

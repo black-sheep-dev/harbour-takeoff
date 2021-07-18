@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # VERSION
-VERSION = 0.7.4
+VERSION = 0.7.5
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # The name of your application
@@ -74,6 +74,8 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += \
     translations/harbour-takeoff-de.ts \
+    translations/harbour-takeoff-fr.ts \
+    translations/harbour-takeoff-pl.ts \
     translations/harbour-takeoff-sv.ts \
     translations/harbour-takeoff-zh_CN.ts
 

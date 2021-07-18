@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
-        <translation>Si vous appréciez mon travail pourquoi ne pas m&apos;offrir une bière&#xa0;?</translation>
+        <translation>Si vous appréciez mon travail pourquoi ne pas m&apos;offrir une bière ?</translation>
     </message>
     <message>
         <source>Donate with PayPal</source>
@@ -38,6 +38,10 @@
     <message>
         <source>Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.</source>
         <translation>Votre langue n&apos;est pas disponible ? Votre aide est la bienvenue pour traduire ce projet sur mon serveur Weblate dédié.</translation>
+    </message>
+    <message>
+        <source>Give star</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
